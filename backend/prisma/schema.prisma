@@ -1,0 +1,172 @@
+// ─── Speaking Academy – Prisma Schema ─────────────────────────────────────────
+// PostgreSQL + Prisma ORM
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ENUMS
+// ─────────────────────────────────────────────────────────────────────────────
+
+enum Level {
+  beginner
+  intermediate
+  advanced
+}
+
+enum Plan {
+  free
+  premium
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 1. USERS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model User {
+  id           String   @id @default(uuid())
+  name         String
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  level        Level    @default(beginner)
+  plan         Plan     @default(free)
+  xp           Int      @default(0)
+  xpLevel      Int      @default(1)   @map("xp_level")
+  streak       Int      @default(0)
+  lastTrainedAt DateTime? @map("last_trained_at")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt     @map("updated_at")
+
+  // Relations
+  progress       UserProgress[]
+  practiceResults PracticeResult[]
+  streakHistory  StreakHistory[]
+  achievements   UserAchievement[]
+
+  @@map("users")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 2. MISSIONS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Mission {
+  id          String  @id @default(uuid())
+  title       String
+  description String?
+  level       Level
+  order       Int
+  isLocked    Boolean @default(true) @map("is_locked")
+  xpReward    Int     @default(10)   @map("xp_reward")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  // Relations
+  progress       UserProgress[]
+  practiceResults PracticeResult[]
+
+  @@unique([level, order])
+  @@map("missions")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 3. USER_PROGRESS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model UserProgress {
+  id            String   @id @default(uuid())
+  userId        String   @map("user_id")
+  missionId     String   @map("mission_id")
+  completed     Boolean  @default(false)
+  score         Int      @default(0)      // 0–100
+  stars         Int      @default(0)      // 1–3
+  attempts      Int      @default(0)
+  lastAttemptAt DateTime? @map("last_attempt_at")
+  completedAt   DateTime? @map("completed_at")
+
+  // Relations
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  mission Mission @relation(fields: [missionId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, missionId])
+  @@map("user_progress")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 4. PRACTICE_RESULTS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model PracticeResult {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  missionId   String?  @map("mission_id")
+  phrase      String
+  userAnswer  String   @map("user_answer")
+  score       Int      // 0–100
+  feedback    String?
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  // Relations
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  mission Mission? @relation(fields: [missionId], references: [id], onDelete: SetNull)
+
+  @@map("practice_results")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 5. STREAK_HISTORY
+// ─────────────────────────────────────────────────────────────────────────────
+
+model StreakHistory {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  date      DateTime @db.Date
+  completed Boolean  @default(true)
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, date])
+  @@map("streak_history")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 6. ACHIEVEMENTS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Achievement {
+  id          String @id @default(uuid())
+  key         String @unique  // ex: "first_mission", "streak_7"
+  title       String
+  description String
+  icon        String
+  xpBonus     Int    @default(0) @map("xp_bonus")
+
+  // Relations
+  users UserAchievement[]
+
+  @@map("achievements")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 7. USER_ACHIEVEMENTS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model UserAchievement {
+  id            String   @id @default(uuid())
+  userId        String   @map("user_id")
+  achievementId String   @map("achievement_id")
+  unlockedAt    DateTime @default(now()) @map("unlocked_at")
+
+  // Relations
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  achievement Achievement @relation(fields: [achievementId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, achievementId])
+  @@map("user_achievements")
+}

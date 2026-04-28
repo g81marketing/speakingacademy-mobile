@@ -1,0 +1,2797 @@
+[
+  {
+    "id": 1,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "greetings",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Hello! How are you?",
+        "pt": "Olá! Como você está?"
+      },
+      {
+        "speaker": "B",
+        "en": "I'm fine, thanks. And you?",
+        "pt": "Estou bem, obrigado. E você?"
+      },
+      {
+        "speaker": "A",
+        "en": "I'm good too!",
+        "pt": "Eu também estou bem!"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "work",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Do you work?",
+        "pt": "Você trabalha?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, I do.",
+        "pt": "Sim, trabalho."
+      },
+      {
+        "speaker": "A",
+        "en": "Do you like your job?",
+        "pt": "Você gosta do seu trabalho?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, I like it.",
+        "pt": "Sim, eu gosto."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "language",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Do you speak English?",
+        "pt": "Você fala inglês?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, a little.",
+        "pt": "Sim, um pouco."
+      },
+      {
+        "speaker": "A",
+        "en": "Do you study every day?",
+        "pt": "Você estuda todo dia?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, I try to.",
+        "pt": "Sim, eu tento."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "possessions",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Do you have a car?",
+        "pt": "Você tem um carro?"
+      },
+      {
+        "speaker": "B",
+        "en": "No, I don't.",
+        "pt": "Não, não tenho."
+      },
+      {
+        "speaker": "A",
+        "en": "Do you have a bike?",
+        "pt": "Você tem uma bicicleta?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, I have a bike.",
+        "pt": "Sim, tenho uma bicicleta."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "food",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Do you like coffee?",
+        "pt": "Você gosta de café?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, I love coffee.",
+        "pt": "Sim, adoro café."
+      },
+      {
+        "speaker": "A",
+        "en": "Do you drink it every day?",
+        "pt": "Você bebe todo dia?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, every morning.",
+        "pt": "Sim, toda manhã."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "study",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Do you study English?",
+        "pt": "Você estuda inglês?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, I do.",
+        "pt": "Sim, estudo."
+      },
+      {
+        "speaker": "A",
+        "en": "Do you practice every day?",
+        "pt": "Você pratica todo dia?"
+      },
+      {
+        "speaker": "B",
+        "en": "I try to practice every day.",
+        "pt": "Eu tento praticar todo dia."
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "family",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Do you have a family?",
+        "pt": "Você tem família?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, I do.",
+        "pt": "Sim, tenho."
+      },
+      {
+        "speaker": "A",
+        "en": "Do you have children?",
+        "pt": "Você tem filhos?"
+      },
+      {
+        "speaker": "B",
+        "en": "No, I don't.",
+        "pt": "Não, não tenho."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "pets",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Do you have a dog?",
+        "pt": "Você tem um cachorro?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, I have a dog.",
+        "pt": "Sim, tenho um cachorro."
+      },
+      {
+        "speaker": "A",
+        "en": "Do you have a cat too?",
+        "pt": "Você também tem um gato?"
+      },
+      {
+        "speaker": "B",
+        "en": "No, just a dog.",
+        "pt": "Não, só um cachorro."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "food",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Do you eat breakfast?",
+        "pt": "Você toma café da manhã?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, every day.",
+        "pt": "Sim, todo dia."
+      },
+      {
+        "speaker": "A",
+        "en": "Do you cook at home?",
+        "pt": "Você cozinha em casa?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, I cook at home.",
+        "pt": "Sim, cozinho em casa."
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "health",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Do you exercise?",
+        "pt": "Você se exercita?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, sometimes.",
+        "pt": "Sim, às vezes."
+      },
+      {
+        "speaker": "A",
+        "en": "Do you walk every day?",
+        "pt": "Você caminha todo dia?"
+      },
+      {
+        "speaker": "B",
+        "en": "No, not every day.",
+        "pt": "Não, não todo dia."
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "leisure",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Do you watch TV?",
+        "pt": "Você assiste TV?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, I do.",
+        "pt": "Sim, assisto."
+      },
+      {
+        "speaker": "A",
+        "en": "Do you like movies?",
+        "pt": "Você gosta de filmes?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, I love movies.",
+        "pt": "Sim, adoro filmes."
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "reading",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Do you read books?",
+        "pt": "Você lê livros?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, I like reading.",
+        "pt": "Sim, gosto de ler."
+      },
+      {
+        "speaker": "A",
+        "en": "Do you read in English?",
+        "pt": "Você lê em inglês?"
+      },
+      {
+        "speaker": "B",
+        "en": "Sometimes, yes.",
+        "pt": "Às vezes, sim."
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "technology",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Do you have a smartphone?",
+        "pt": "Você tem um smartphone?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, I do.",
+        "pt": "Sim, tenho."
+      },
+      {
+        "speaker": "A",
+        "en": "Do you use it for work?",
+        "pt": "Você usa para trabalho?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, all the time.",
+        "pt": "Sim, o tempo todo."
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "sleep",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Do you sleep well?",
+        "pt": "Você dorme bem?"
+      },
+      {
+        "speaker": "B",
+        "en": "Usually, yes.",
+        "pt": "Geralmente, sim."
+      },
+      {
+        "speaker": "A",
+        "en": "Do you go to bed early?",
+        "pt": "Você vai dormir cedo?"
+      },
+      {
+        "speaker": "B",
+        "en": "No, I sleep late.",
+        "pt": "Não, durmo tarde."
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "music",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Do you like music?",
+        "pt": "Você gosta de música?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, I love music.",
+        "pt": "Sim, adoro música."
+      },
+      {
+        "speaker": "A",
+        "en": "Do you play an instrument?",
+        "pt": "Você toca algum instrumento?"
+      },
+      {
+        "speaker": "B",
+        "en": "No, I don't.",
+        "pt": "Não, não toco."
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "transport",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Do you take the bus?",
+        "pt": "Você pega ônibus?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, every day.",
+        "pt": "Sim, todo dia."
+      },
+      {
+        "speaker": "A",
+        "en": "Do you drive to work?",
+        "pt": "Você dirige para o trabalho?"
+      },
+      {
+        "speaker": "B",
+        "en": "No, I take the bus.",
+        "pt": "Não, eu pego o ônibus."
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "sports",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Do you like sports?",
+        "pt": "Você gosta de esportes?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, I do.",
+        "pt": "Sim, gosto."
+      },
+      {
+        "speaker": "A",
+        "en": "Do you play football?",
+        "pt": "Você joga futebol?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, on weekends.",
+        "pt": "Sim, nos fins de semana."
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "shopping",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Do you shop online?",
+        "pt": "Você compra online?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, sometimes.",
+        "pt": "Sim, às vezes."
+      },
+      {
+        "speaker": "A",
+        "en": "Do you buy clothes online?",
+        "pt": "Você compra roupas online?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, it's very easy.",
+        "pt": "Sim, é muito fácil."
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "social",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Do you have friends at work?",
+        "pt": "Você tem amigos no trabalho?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, I do.",
+        "pt": "Sim, tenho."
+      },
+      {
+        "speaker": "A",
+        "en": "Do you have lunch with them?",
+        "pt": "Você almoça com eles?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, sometimes.",
+        "pt": "Sim, às vezes."
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "travel",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Do you like to travel?",
+        "pt": "Você gosta de viajar?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, I love it.",
+        "pt": "Sim, adoro."
+      },
+      {
+        "speaker": "A",
+        "en": "Do you travel every year?",
+        "pt": "Você viaja todo ano?"
+      },
+      {
+        "speaker": "B",
+        "en": "No, not every year.",
+        "pt": "Não, não todo ano."
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "work",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What do you do?",
+        "pt": "O que você faz?"
+      },
+      {
+        "speaker": "B",
+        "en": "I'm a teacher.",
+        "pt": "Sou professor."
+      },
+      {
+        "speaker": "A",
+        "en": "Where do you work?",
+        "pt": "Onde você trabalha?"
+      },
+      {
+        "speaker": "B",
+        "en": "I work at a school.",
+        "pt": "Trabalho em uma escola."
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "location",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Where do you live?",
+        "pt": "Onde você mora?"
+      },
+      {
+        "speaker": "B",
+        "en": "I live in São Paulo.",
+        "pt": "Moro em São Paulo."
+      },
+      {
+        "speaker": "A",
+        "en": "Do you like living there?",
+        "pt": "Você gosta de morar lá?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, it's a great city.",
+        "pt": "Sim, é uma ótima cidade."
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "schedule",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "When do you start work?",
+        "pt": "Quando você começa a trabalhar?"
+      },
+      {
+        "speaker": "B",
+        "en": "I start at eight.",
+        "pt": "Começo às oito."
+      },
+      {
+        "speaker": "A",
+        "en": "When do you finish?",
+        "pt": "Quando você termina?"
+      },
+      {
+        "speaker": "B",
+        "en": "I finish at five.",
+        "pt": "Termino às cinco."
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "food",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What do you eat for breakfast?",
+        "pt": "O que você come no café da manhã?"
+      },
+      {
+        "speaker": "B",
+        "en": "I eat bread and drink coffee.",
+        "pt": "Como pão e bebo café."
+      },
+      {
+        "speaker": "A",
+        "en": "What about lunch?",
+        "pt": "E no almoço?"
+      },
+      {
+        "speaker": "B",
+        "en": "I have rice and beans.",
+        "pt": "Como arroz e feijão."
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "routine",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What time do you wake up?",
+        "pt": "Que horas você acorda?"
+      },
+      {
+        "speaker": "B",
+        "en": "I wake up at six thirty.",
+        "pt": "Acordo às seis e meia."
+      },
+      {
+        "speaker": "A",
+        "en": "What do you do first?",
+        "pt": "O que você faz primeiro?"
+      },
+      {
+        "speaker": "B",
+        "en": "I take a shower and have breakfast.",
+        "pt": "Tomo banho e café da manhã."
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "weekend",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What do you do on weekends?",
+        "pt": "O que você faz nos fins de semana?"
+      },
+      {
+        "speaker": "B",
+        "en": "I rest and spend time with my family.",
+        "pt": "Descanso e fico com minha família."
+      },
+      {
+        "speaker": "A",
+        "en": "Where do you usually go?",
+        "pt": "Onde você geralmente vai?"
+      },
+      {
+        "speaker": "B",
+        "en": "We go to the park or the mall.",
+        "pt": "Vamos ao parque ou ao shopping."
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "study",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "When do you study English?",
+        "pt": "Quando você estuda inglês?"
+      },
+      {
+        "speaker": "B",
+        "en": "I study in the morning.",
+        "pt": "Estudo de manhã."
+      },
+      {
+        "speaker": "A",
+        "en": "How long do you study?",
+        "pt": "Por quanto tempo você estuda?"
+      },
+      {
+        "speaker": "B",
+        "en": "About thirty minutes a day.",
+        "pt": "Cerca de trinta minutos por dia."
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "shopping",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Where do you buy your food?",
+        "pt": "Onde você compra sua comida?"
+      },
+      {
+        "speaker": "B",
+        "en": "I go to the supermarket.",
+        "pt": "Vou ao supermercado."
+      },
+      {
+        "speaker": "A",
+        "en": "When do you go?",
+        "pt": "Quando você vai?"
+      },
+      {
+        "speaker": "B",
+        "en": "I usually go on Saturdays.",
+        "pt": "Geralmente vou aos sábados."
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "leisure",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What do you do after work?",
+        "pt": "O que você faz depois do trabalho?"
+      },
+      {
+        "speaker": "B",
+        "en": "I watch TV or read a book.",
+        "pt": "Assisto TV ou leio um livro."
+      },
+      {
+        "speaker": "A",
+        "en": "What kind of shows do you watch?",
+        "pt": "Que tipo de série você assiste?"
+      },
+      {
+        "speaker": "B",
+        "en": "I like series and documentaries.",
+        "pt": "Gosto de séries e documentários."
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "transport",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "How do you get to work?",
+        "pt": "Como você vai para o trabalho?"
+      },
+      {
+        "speaker": "B",
+        "en": "I take the subway.",
+        "pt": "Pego o metrô."
+      },
+      {
+        "speaker": "A",
+        "en": "How long does it take?",
+        "pt": "Quanto tempo leva?"
+      },
+      {
+        "speaker": "B",
+        "en": "About forty minutes.",
+        "pt": "Cerca de quarenta minutos."
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "gym",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "When do you go to the gym?",
+        "pt": "Quando você vai à academia?"
+      },
+      {
+        "speaker": "B",
+        "en": "I go three times a week.",
+        "pt": "Vou três vezes por semana."
+      },
+      {
+        "speaker": "A",
+        "en": "What do you do there?",
+        "pt": "O que você faz lá?"
+      },
+      {
+        "speaker": "B",
+        "en": "I run and lift weights.",
+        "pt": "Corro e faço musculação."
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "family",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Where does your family live?",
+        "pt": "Onde sua família mora?"
+      },
+      {
+        "speaker": "B",
+        "en": "They live in another city.",
+        "pt": "Eles moram em outra cidade."
+      },
+      {
+        "speaker": "A",
+        "en": "When do you visit them?",
+        "pt": "Quando você os visita?"
+      },
+      {
+        "speaker": "B",
+        "en": "I visit them on holidays.",
+        "pt": "Os visito nos feriados."
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "music",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What kind of music do you like?",
+        "pt": "Que tipo de música você gosta?"
+      },
+      {
+        "speaker": "B",
+        "en": "I like pop and rock music.",
+        "pt": "Gosto de pop e rock."
+      },
+      {
+        "speaker": "A",
+        "en": "Who is your favorite artist?",
+        "pt": "Qual é seu artista favorito?"
+      },
+      {
+        "speaker": "B",
+        "en": "I really like The Beatles.",
+        "pt": "Gosto muito dos Beatles."
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "food",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Where do you usually have lunch?",
+        "pt": "Onde você geralmente almoça?"
+      },
+      {
+        "speaker": "B",
+        "en": "I have lunch at work.",
+        "pt": "Almoço no trabalho."
+      },
+      {
+        "speaker": "A",
+        "en": "What do you eat?",
+        "pt": "O que você come?"
+      },
+      {
+        "speaker": "B",
+        "en": "I eat at the company restaurant.",
+        "pt": "Como no restaurante da empresa."
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "vacation",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Where do you go on vacation?",
+        "pt": "Para onde você vai nas férias?"
+      },
+      {
+        "speaker": "B",
+        "en": "I usually go to the beach.",
+        "pt": "Geralmente vou à praia."
+      },
+      {
+        "speaker": "A",
+        "en": "How long do you stay?",
+        "pt": "Quanto tempo você fica?"
+      },
+      {
+        "speaker": "B",
+        "en": "About two weeks.",
+        "pt": "Cerca de duas semanas."
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "sleep",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What time do you go to bed?",
+        "pt": "Que horas você vai dormir?"
+      },
+      {
+        "speaker": "B",
+        "en": "I go to bed around eleven.",
+        "pt": "Vou dormir por volta das onze."
+      },
+      {
+        "speaker": "A",
+        "en": "How many hours do you sleep?",
+        "pt": "Quantas horas você dorme?"
+      },
+      {
+        "speaker": "B",
+        "en": "About seven or eight hours.",
+        "pt": "Cerca de sete ou oito horas."
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "language",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What languages do you speak?",
+        "pt": "Que idiomas você fala?"
+      },
+      {
+        "speaker": "B",
+        "en": "I speak Portuguese and some English.",
+        "pt": "Falo português e um pouco de inglês."
+      },
+      {
+        "speaker": "A",
+        "en": "Where do you practice English?",
+        "pt": "Onde você pratica inglês?"
+      },
+      {
+        "speaker": "B",
+        "en": "I practice with apps and online videos.",
+        "pt": "Pratico com apps e vídeos online."
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "hobbies",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What do you do for fun?",
+        "pt": "O que você faz por diversão?"
+      },
+      {
+        "speaker": "B",
+        "en": "I play video games.",
+        "pt": "Jogo videogame."
+      },
+      {
+        "speaker": "A",
+        "en": "What games do you play?",
+        "pt": "Que jogos você joga?"
+      },
+      {
+        "speaker": "B",
+        "en": "I like football and adventure games.",
+        "pt": "Gosto de futebol e jogos de aventura."
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "work",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "How long have you worked there?",
+        "pt": "Há quanto tempo você trabalha lá?"
+      },
+      {
+        "speaker": "B",
+        "en": "I have worked there for three years.",
+        "pt": "Trabalho lá há três anos."
+      },
+      {
+        "speaker": "A",
+        "en": "Do you like it?",
+        "pt": "Você gosta?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, I really like it.",
+        "pt": "Sim, gosto muito."
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "level": "beginner",
+    "type": "dialogue",
+    "focus": "food",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What kind of food do you like?",
+        "pt": "Que tipo de comida você gosta?"
+      },
+      {
+        "speaker": "B",
+        "en": "I like Italian and Japanese food.",
+        "pt": "Gosto de comida italiana e japonesa."
+      },
+      {
+        "speaker": "A",
+        "en": "What is your favorite dish?",
+        "pt": "Qual é seu prato favorito?"
+      },
+      {
+        "speaker": "B",
+        "en": "I love pasta and sushi.",
+        "pt": "Adoro massa e sushi."
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "friends",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "When do you meet your friends?",
+        "pt": "Quando você encontra seus amigos?"
+      },
+      {
+        "speaker": "B",
+        "en": "We usually meet on weekends.",
+        "pt": "Geralmente nos encontramos nos fins de semana."
+      },
+      {
+        "speaker": "A",
+        "en": "What do you do together?",
+        "pt": "O que vocês fazem juntos?"
+      },
+      {
+        "speaker": "B",
+        "en": "We go out for dinner or watch a game.",
+        "pt": "Saímos para jantar ou assistimos a um jogo."
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "morning",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What is your morning routine?",
+        "pt": "Qual é sua rotina matinal?"
+      },
+      {
+        "speaker": "B",
+        "en": "I wake up, exercise, shower, and have breakfast.",
+        "pt": "Acordo, me exercito, tomo banho e café."
+      },
+      {
+        "speaker": "A",
+        "en": "How long does it take?",
+        "pt": "Quanto tempo leva?"
+      },
+      {
+        "speaker": "B",
+        "en": "About an hour and a half.",
+        "pt": "Cerca de uma hora e meia."
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "future",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What are your plans for the weekend?",
+        "pt": "Quais são seus planos para o fim de semana?"
+      },
+      {
+        "speaker": "B",
+        "en": "I'm going to visit my parents.",
+        "pt": "Vou visitar meus pais."
+      },
+      {
+        "speaker": "A",
+        "en": "Where do they live?",
+        "pt": "Onde eles moram?"
+      },
+      {
+        "speaker": "B",
+        "en": "They live about two hours from here.",
+        "pt": "Eles moram a cerca de duas horas daqui."
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "work",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What do you like most about your job?",
+        "pt": "O que você mais gosta no seu trabalho?"
+      },
+      {
+        "speaker": "B",
+        "en": "I like the team and the challenges.",
+        "pt": "Gosto da equipe e dos desafios."
+      },
+      {
+        "speaker": "A",
+        "en": "What do you like least?",
+        "pt": "O que você menos gosta?"
+      },
+      {
+        "speaker": "B",
+        "en": "The long meetings.",
+        "pt": "As reuniões longas."
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "health",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "How do you take care of your health?",
+        "pt": "Como você cuida da sua saúde?"
+      },
+      {
+        "speaker": "B",
+        "en": "I exercise regularly and eat well.",
+        "pt": "Me exercito regularmente e como bem."
+      },
+      {
+        "speaker": "A",
+        "en": "What do you eat to stay healthy?",
+        "pt": "O que você come para se manter saudável?"
+      },
+      {
+        "speaker": "B",
+        "en": "A lot of vegetables, fruits, and water.",
+        "pt": "Muitos legumes, frutas e água."
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "career",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "How long have you been in this area?",
+        "pt": "Há quanto tempo você está nessa área?"
+      },
+      {
+        "speaker": "B",
+        "en": "I have been working here for five years.",
+        "pt": "Trabalho aqui há cinco anos."
+      },
+      {
+        "speaker": "A",
+        "en": "Did you always want to do this?",
+        "pt": "Você sempre quis fazer isso?"
+      },
+      {
+        "speaker": "B",
+        "en": "Not exactly, but I really like it now.",
+        "pt": "Não exatamente, mas gosto muito agora."
+      }
+    ]
+  },
+  {
+    "id": 47,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "city",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What do you like about your city?",
+        "pt": "O que você gosta da sua cidade?"
+      },
+      {
+        "speaker": "B",
+        "en": "I like the restaurants and the parks.",
+        "pt": "Gosto dos restaurantes e dos parques."
+      },
+      {
+        "speaker": "A",
+        "en": "What would you change?",
+        "pt": "O que você mudaria?"
+      },
+      {
+        "speaker": "B",
+        "en": "I would improve public transport.",
+        "pt": "Melhoraria o transporte público."
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "holidays",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What do you do on holidays?",
+        "pt": "O que você faz nos feriados?"
+      },
+      {
+        "speaker": "B",
+        "en": "I spend time with my family.",
+        "pt": "Fico com minha família."
+      },
+      {
+        "speaker": "A",
+        "en": "Do you travel on holidays?",
+        "pt": "Você viaja nos feriados?"
+      },
+      {
+        "speaker": "B",
+        "en": "Sometimes, if the holiday is long.",
+        "pt": "Às vezes, se o feriado for longo."
+      }
+    ]
+  },
+  {
+    "id": 49,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "technology",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What apps do you use most?",
+        "pt": "Quais apps você mais usa?"
+      },
+      {
+        "speaker": "B",
+        "en": "I use WhatsApp, Instagram, and Google Maps.",
+        "pt": "Uso WhatsApp, Instagram e Google Maps."
+      },
+      {
+        "speaker": "A",
+        "en": "Do you use any apps for work?",
+        "pt": "Você usa algum app para trabalho?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, I use Slack and Google Meet.",
+        "pt": "Sim, uso Slack e Google Meet."
+      }
+    ]
+  },
+  {
+    "id": 50,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "learning",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "How do you learn new things?",
+        "pt": "Como você aprende coisas novas?"
+      },
+      {
+        "speaker": "B",
+        "en": "I watch videos online and read articles.",
+        "pt": "Assisto vídeos online e leio artigos."
+      },
+      {
+        "speaker": "A",
+        "en": "What are you learning now?",
+        "pt": "O que você está aprendendo agora?"
+      },
+      {
+        "speaker": "B",
+        "en": "I am learning English and data analysis.",
+        "pt": "Estou aprendendo inglês e análise de dados."
+      }
+    ]
+  },
+  {
+    "id": 51,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "office",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Do you have a meeting today?",
+        "pt": "Você tem reunião hoje?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, I have one at ten.",
+        "pt": "Sim, tenho uma às dez."
+      },
+      {
+        "speaker": "A",
+        "en": "Can you send me the agenda?",
+        "pt": "Você pode me enviar a pauta?"
+      },
+      {
+        "speaker": "B",
+        "en": "Sure, I'll send it right now.",
+        "pt": "Claro, vou enviar agora."
+      }
+    ]
+  },
+  {
+    "id": 52,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "project",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "How is the project going?",
+        "pt": "Como está o projeto?"
+      },
+      {
+        "speaker": "B",
+        "en": "It's going well. We're on track.",
+        "pt": "Está indo bem. Estamos dentro do prazo."
+      },
+      {
+        "speaker": "A",
+        "en": "When will it be ready?",
+        "pt": "Quando estará pronto?"
+      },
+      {
+        "speaker": "B",
+        "en": "We should finish by Friday.",
+        "pt": "Devemos terminar até sexta."
+      }
+    ]
+  },
+  {
+    "id": 53,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "phone",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Hello, this is Ana. Can I speak to John?",
+        "pt": "Olá, sou a Ana. Posso falar com o John?"
+      },
+      {
+        "speaker": "B",
+        "en": "He's in a meeting right now.",
+        "pt": "Ele está em reunião agora."
+      },
+      {
+        "speaker": "A",
+        "en": "Can you ask him to call me back?",
+        "pt": "Pode pedir que ele me ligue de volta?"
+      },
+      {
+        "speaker": "B",
+        "en": "Of course. I'll give him the message.",
+        "pt": "Claro. Vou passar o recado."
+      }
+    ]
+  },
+  {
+    "id": 54,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "help",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Can you help me with this report?",
+        "pt": "Você pode me ajudar com este relatório?"
+      },
+      {
+        "speaker": "B",
+        "en": "Sure, what do you need?",
+        "pt": "Claro, o que você precisa?"
+      },
+      {
+        "speaker": "A",
+        "en": "I need to check the numbers.",
+        "pt": "Preciso verificar os números."
+      },
+      {
+        "speaker": "B",
+        "en": "Let me take a look with you.",
+        "pt": "Deixa eu dar uma olhada com você."
+      }
+    ]
+  },
+  {
+    "id": 55,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "scheduling",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Are you free tomorrow afternoon?",
+        "pt": "Você está livre amanhã à tarde?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, after two o'clock.",
+        "pt": "Sim, depois das duas."
+      },
+      {
+        "speaker": "A",
+        "en": "Can we meet at three?",
+        "pt": "Podemos nos encontrar às três?"
+      },
+      {
+        "speaker": "B",
+        "en": "That works for me.",
+        "pt": "Isso funciona para mim."
+      }
+    ]
+  },
+  {
+    "id": 56,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "tasks",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Who is working on the presentation?",
+        "pt": "Quem está trabalhando na apresentação?"
+      },
+      {
+        "speaker": "B",
+        "en": "I am. I started yesterday.",
+        "pt": "Eu estou. Comecei ontem."
+      },
+      {
+        "speaker": "A",
+        "en": "Do you need any help?",
+        "pt": "Você precisa de ajuda?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, can you review the slides?",
+        "pt": "Sim, você pode revisar os slides?"
+      }
+    ]
+  },
+  {
+    "id": 57,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "email",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Can you send me the contract?",
+        "pt": "Você pode me enviar o contrato?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, which email should I use?",
+        "pt": "Sim, qual email devo usar?"
+      },
+      {
+        "speaker": "A",
+        "en": "Use my work email, please.",
+        "pt": "Use meu email de trabalho, por favor."
+      },
+      {
+        "speaker": "B",
+        "en": "Done. I just sent it.",
+        "pt": "Feito. Acabei de enviar."
+      }
+    ]
+  },
+  {
+    "id": 58,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "deadline",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "When is the deadline for this task?",
+        "pt": "Qual é o prazo para essa tarefa?"
+      },
+      {
+        "speaker": "B",
+        "en": "It's due on Thursday.",
+        "pt": "O prazo é quinta-feira."
+      },
+      {
+        "speaker": "A",
+        "en": "Can we extend it to Friday?",
+        "pt": "Podemos estender para sexta?"
+      },
+      {
+        "speaker": "B",
+        "en": "I'll check with the manager.",
+        "pt": "Vou verificar com o gerente."
+      }
+    ]
+  },
+  {
+    "id": 59,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "update",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What did you do yesterday?",
+        "pt": "O que você fez ontem?"
+      },
+      {
+        "speaker": "B",
+        "en": "I finished the client report.",
+        "pt": "Terminei o relatório do cliente."
+      },
+      {
+        "speaker": "A",
+        "en": "Did you send it to them?",
+        "pt": "Você o enviou para eles?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, I sent it in the morning.",
+        "pt": "Sim, enviei de manhã."
+      }
+    ]
+  },
+  {
+    "id": 60,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "problem",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "We have a problem with the system.",
+        "pt": "Temos um problema com o sistema."
+      },
+      {
+        "speaker": "B",
+        "en": "What happened?",
+        "pt": "O que aconteceu?"
+      },
+      {
+        "speaker": "A",
+        "en": "It went down this morning.",
+        "pt": "Caiu esta manhã."
+      },
+      {
+        "speaker": "B",
+        "en": "I'll call IT right away.",
+        "pt": "Vou chamar o TI imediatamente."
+      }
+    ]
+  },
+  {
+    "id": 61,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "appointment",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Can we meet at three o'clock?",
+        "pt": "Podemos nos reunir às três?"
+      },
+      {
+        "speaker": "B",
+        "en": "I have a call at three. What about four?",
+        "pt": "Tenho uma ligação às três. Que tal às quatro?"
+      },
+      {
+        "speaker": "A",
+        "en": "Four works. Conference room B?",
+        "pt": "Quatro está bom. Sala de reunião B?"
+      },
+      {
+        "speaker": "B",
+        "en": "Perfect. See you there.",
+        "pt": "Perfeito. Te vejo lá."
+      }
+    ]
+  },
+  {
+    "id": 62,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "feedback",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "How was the presentation?",
+        "pt": "Como foi a apresentação?"
+      },
+      {
+        "speaker": "B",
+        "en": "It went well. The client liked it.",
+        "pt": "Foi bem. O cliente gostou."
+      },
+      {
+        "speaker": "A",
+        "en": "What did they say?",
+        "pt": "O que eles disseram?"
+      },
+      {
+        "speaker": "B",
+        "en": "They want to move forward with the project.",
+        "pt": "Querem avançar com o projeto."
+      }
+    ]
+  },
+  {
+    "id": 63,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "delegation",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Can you handle the client call today?",
+        "pt": "Você pode atender a ligação do cliente hoje?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, what time is it?",
+        "pt": "Sim, que horas é?"
+      },
+      {
+        "speaker": "A",
+        "en": "At two o'clock. I'll send you the notes.",
+        "pt": "Às duas. Vou te enviar as anotações."
+      },
+      {
+        "speaker": "B",
+        "en": "Great, I'll be ready.",
+        "pt": "Ótimo, estarei pronto."
+      }
+    ]
+  },
+  {
+    "id": 64,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "report",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Have you finished the monthly report?",
+        "pt": "Você terminou o relatório mensal?"
+      },
+      {
+        "speaker": "B",
+        "en": "Not yet. I need two more hours.",
+        "pt": "Ainda não. Preciso de mais duas horas."
+      },
+      {
+        "speaker": "A",
+        "en": "Can you send it before five?",
+        "pt": "Pode enviar antes das cinco?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, I'll have it done by then.",
+        "pt": "Sim, terei pronto até lá."
+      }
+    ]
+  },
+  {
+    "id": 65,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "remote",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Are you working from home today?",
+        "pt": "Você está trabalhando de casa hoje?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, I have a quiet day.",
+        "pt": "Sim, tenho um dia tranquilo."
+      },
+      {
+        "speaker": "A",
+        "en": "Can you join the video call at noon?",
+        "pt": "Pode entrar na videochamada ao meio-dia?"
+      },
+      {
+        "speaker": "B",
+        "en": "Of course. I'll be online.",
+        "pt": "Claro. Estarei online."
+      }
+    ]
+  },
+  {
+    "id": 66,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "travel",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Are you going to the conference next week?",
+        "pt": "Você vai à conferência na próxima semana?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, I'm flying on Monday.",
+        "pt": "Sim, viajo na segunda."
+      },
+      {
+        "speaker": "A",
+        "en": "How long will you be there?",
+        "pt": "Por quanto tempo ficará lá?"
+      },
+      {
+        "speaker": "B",
+        "en": "Three days. I'll be back Thursday.",
+        "pt": "Três dias. Volto na quinta."
+      }
+    ]
+  },
+  {
+    "id": 67,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "budget",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Do we have the budget for this?",
+        "pt": "Temos orçamento para isso?"
+      },
+      {
+        "speaker": "B",
+        "en": "I need to check with finance.",
+        "pt": "Preciso verificar com o financeiro."
+      },
+      {
+        "speaker": "A",
+        "en": "How long will that take?",
+        "pt": "Quanto tempo isso vai levar?"
+      },
+      {
+        "speaker": "B",
+        "en": "I should know by tomorrow.",
+        "pt": "Devo saber até amanhã."
+      }
+    ]
+  },
+  {
+    "id": 68,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "client",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "The client is waiting in the lobby.",
+        "pt": "O cliente está esperando no lobby."
+      },
+      {
+        "speaker": "B",
+        "en": "I'll be there in five minutes.",
+        "pt": "Estarei lá em cinco minutos."
+      },
+      {
+        "speaker": "A",
+        "en": "Can you offer them something to drink?",
+        "pt": "Pode oferecer algo para beber?"
+      },
+      {
+        "speaker": "B",
+        "en": "Of course. I'll do that now.",
+        "pt": "Claro. Farei isso agora."
+      }
+    ]
+  },
+  {
+    "id": 69,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "lunch",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Do you want to have lunch together?",
+        "pt": "Quer almoçar juntos?"
+      },
+      {
+        "speaker": "B",
+        "en": "Sure, what time?",
+        "pt": "Claro, que horas?"
+      },
+      {
+        "speaker": "A",
+        "en": "Is twelve thirty okay?",
+        "pt": "Meio-dia e meia está bom?"
+      },
+      {
+        "speaker": "B",
+        "en": "Perfect. Where should we go?",
+        "pt": "Perfeito. Onde vamos?"
+      }
+    ]
+  },
+  {
+    "id": 70,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "review",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "How are you doing this month?",
+        "pt": "Como você está se saindo este mês?"
+      },
+      {
+        "speaker": "B",
+        "en": "Pretty well. I finished all my tasks.",
+        "pt": "Muito bem. Terminei todas as minhas tarefas."
+      },
+      {
+        "speaker": "A",
+        "en": "Is there anything you need?",
+        "pt": "Há algo que você precisa?"
+      },
+      {
+        "speaker": "B",
+        "en": "More time for planning would help.",
+        "pt": "Mais tempo para planejamento ajudaria."
+      }
+    ]
+  },
+  {
+    "id": 71,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "new project",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "We are starting a new project next month.",
+        "pt": "Começamos um novo projeto no próximo mês."
+      },
+      {
+        "speaker": "B",
+        "en": "That's exciting! What is it about?",
+        "pt": "Que ótimo! Do que se trata?"
+      },
+      {
+        "speaker": "A",
+        "en": "It's about improving our mobile app.",
+        "pt": "É sobre melhorar nosso app mobile."
+      },
+      {
+        "speaker": "B",
+        "en": "I'd love to be part of the team.",
+        "pt": "Adoraria fazer parte da equipe."
+      }
+    ]
+  },
+  {
+    "id": 72,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "technical",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "The system is down. What do we do?",
+        "pt": "O sistema está fora. O que fazemos?"
+      },
+      {
+        "speaker": "B",
+        "en": "I already contacted the tech team.",
+        "pt": "Já contatei o time técnico."
+      },
+      {
+        "speaker": "A",
+        "en": "How long will it take to fix?",
+        "pt": "Quanto tempo levará para corrigir?"
+      },
+      {
+        "speaker": "B",
+        "en": "They said about two hours.",
+        "pt": "Eles disseram cerca de duas horas."
+      }
+    ]
+  },
+  {
+    "id": 73,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "training",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Are you going to the training session?",
+        "pt": "Você vai à sessão de treinamento?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, it starts at nine.",
+        "pt": "Sim, começa às nove."
+      },
+      {
+        "speaker": "A",
+        "en": "What is it about?",
+        "pt": "Sobre o que é?"
+      },
+      {
+        "speaker": "B",
+        "en": "Leadership and communication skills.",
+        "pt": "Habilidades de liderança e comunicação."
+      }
+    ]
+  },
+  {
+    "id": 74,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "collaboration",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Can we work on this together?",
+        "pt": "Podemos trabalhar nisso juntos?"
+      },
+      {
+        "speaker": "B",
+        "en": "Absolutely. When do you want to start?",
+        "pt": "Com certeza. Quando quer começar?"
+      },
+      {
+        "speaker": "A",
+        "en": "How about this afternoon?",
+        "pt": "Que tal esta tarde?"
+      },
+      {
+        "speaker": "B",
+        "en": "Works for me. Let's meet at two.",
+        "pt": "Funciona para mim. Vamos nos encontrar às duas."
+      }
+    ]
+  },
+  {
+    "id": 75,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "progress",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "How far are you with the analysis?",
+        "pt": "Até onde você foi com a análise?"
+      },
+      {
+        "speaker": "B",
+        "en": "I'm about halfway through.",
+        "pt": "Estou pela metade."
+      },
+      {
+        "speaker": "A",
+        "en": "Will you finish today?",
+        "pt": "Vai terminar hoje?"
+      },
+      {
+        "speaker": "B",
+        "en": "I think so. I just need a few more hours.",
+        "pt": "Acho que sim. Só preciso de mais algumas horas."
+      }
+    ]
+  },
+  {
+    "id": 76,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "decision",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What should we do about the delay?",
+        "pt": "O que devemos fazer sobre o atraso?"
+      },
+      {
+        "speaker": "B",
+        "en": "We should talk to the client first.",
+        "pt": "Devemos falar com o cliente primeiro."
+      },
+      {
+        "speaker": "A",
+        "en": "Should I send an email or call?",
+        "pt": "Devo enviar um email ou ligar?"
+      },
+      {
+        "speaker": "B",
+        "en": "Call. It's more personal.",
+        "pt": "Ligue. É mais pessoal."
+      }
+    ]
+  },
+  {
+    "id": 77,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "priorities",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What is most important this week?",
+        "pt": "O que é mais importante esta semana?"
+      },
+      {
+        "speaker": "B",
+        "en": "Finishing the proposal for the client.",
+        "pt": "Terminar a proposta para o cliente."
+      },
+      {
+        "speaker": "A",
+        "en": "And after that?",
+        "pt": "E depois disso?"
+      },
+      {
+        "speaker": "B",
+        "en": "The internal report for management.",
+        "pt": "O relatório interno para a diretoria."
+      }
+    ]
+  },
+  {
+    "id": 78,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "busy",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Are you busy right now?",
+        "pt": "Você está ocupado agora?"
+      },
+      {
+        "speaker": "B",
+        "en": "A little, but I can talk. What do you need?",
+        "pt": "Um pouco, mas posso falar. O que precisa?"
+      },
+      {
+        "speaker": "A",
+        "en": "I need five minutes to review something.",
+        "pt": "Preciso de cinco minutos para revisar algo."
+      },
+      {
+        "speaker": "B",
+        "en": "Sure, let's do it.",
+        "pt": "Claro, vamos fazer isso."
+      }
+    ]
+  },
+  {
+    "id": 79,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "reporting",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Did you send the weekly report?",
+        "pt": "Você enviou o relatório semanal?"
+      },
+      {
+        "speaker": "B",
+        "en": "Not yet. I'm finishing it now.",
+        "pt": "Ainda não. Estou terminando agora."
+      },
+      {
+        "speaker": "A",
+        "en": "Please send it by noon.",
+        "pt": "Por favor, envie até meio-dia."
+      },
+      {
+        "speaker": "B",
+        "en": "No problem. It will be ready.",
+        "pt": "Sem problema. Estará pronto."
+      }
+    ]
+  },
+  {
+    "id": 80,
+    "level": "intermediate",
+    "type": "dialogue",
+    "focus": "planning",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What is the plan for next week?",
+        "pt": "Qual é o plano para a próxima semana?"
+      },
+      {
+        "speaker": "B",
+        "en": "We have two client meetings and a product review.",
+        "pt": "Temos duas reuniões com clientes e uma revisão de produto."
+      },
+      {
+        "speaker": "A",
+        "en": "Who is leading the product review?",
+        "pt": "Quem está liderando a revisão de produto?"
+      },
+      {
+        "speaker": "B",
+        "en": "Carlos is. He's been preparing for it.",
+        "pt": "Carlos está. Ele tem se preparado para isso."
+      }
+    ]
+  },
+  {
+    "id": 81,
+    "level": "advanced",
+    "type": "dialogue",
+    "focus": "opinion",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What do you think about the new policy?",
+        "pt": "O que você acha da nova política?"
+      },
+      {
+        "speaker": "B",
+        "en": "Honestly, I think it's a good change.",
+        "pt": "Honestamente, acho que é uma boa mudança."
+      },
+      {
+        "speaker": "A",
+        "en": "Why do you say that?",
+        "pt": "Por que você diz isso?"
+      },
+      {
+        "speaker": "B",
+        "en": "It gives the team more flexibility and trust.",
+        "pt": "Dá mais flexibilidade e confiança à equipe."
+      }
+    ]
+  },
+  {
+    "id": 82,
+    "level": "advanced",
+    "type": "dialogue",
+    "focus": "proposal",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Should we accept this proposal?",
+        "pt": "Devemos aceitar essa proposta?"
+      },
+      {
+        "speaker": "B",
+        "en": "I think we should. The terms are fair.",
+        "pt": "Acho que sim. Os termos são justos."
+      },
+      {
+        "speaker": "A",
+        "en": "What about the timeline?",
+        "pt": "E quanto ao prazo?"
+      },
+      {
+        "speaker": "B",
+        "en": "It's tight, but we can manage if we plan well.",
+        "pt": "É apertado, mas conseguimos se planejarmos bem."
+      }
+    ]
+  },
+  {
+    "id": 83,
+    "level": "advanced",
+    "type": "dialogue",
+    "focus": "analysis",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Why do you think the numbers dropped?",
+        "pt": "Por que você acha que os números caíram?"
+      },
+      {
+        "speaker": "B",
+        "en": "I believe it's a seasonal trend.",
+        "pt": "Acredito que é uma tendência sazonal."
+      },
+      {
+        "speaker": "A",
+        "en": "Do you have data to support that?",
+        "pt": "Você tem dados para embasar isso?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, the same happened last year at this time.",
+        "pt": "Sim, o mesmo aconteceu no ano passado nessa época."
+      }
+    ]
+  },
+  {
+    "id": 84,
+    "level": "advanced",
+    "type": "dialogue",
+    "focus": "advice",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What would you recommend in this situation?",
+        "pt": "O que você recomendaria nessa situação?"
+      },
+      {
+        "speaker": "B",
+        "en": "I would start by talking to the stakeholders.",
+        "pt": "Começaria conversando com os stakeholders."
+      },
+      {
+        "speaker": "A",
+        "en": "And if they don't agree?",
+        "pt": "E se eles não concordarem?"
+      },
+      {
+        "speaker": "B",
+        "en": "Then we need to find a middle ground.",
+        "pt": "Então precisamos encontrar um meio-termo."
+      }
+    ]
+  },
+  {
+    "id": 85,
+    "level": "advanced",
+    "type": "dialogue",
+    "focus": "negotiation",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "We need to reduce costs by fifteen percent.",
+        "pt": "Precisamos reduzir custos em quinze por cento."
+      },
+      {
+        "speaker": "B",
+        "en": "That's a big cut. Where do you suggest we start?",
+        "pt": "É um corte grande. Por onde você sugere começar?"
+      },
+      {
+        "speaker": "A",
+        "en": "I think we can optimize our processes first.",
+        "pt": "Acho que podemos otimizar nossos processos primeiro."
+      },
+      {
+        "speaker": "B",
+        "en": "Agreed. Let's map out the biggest expenses.",
+        "pt": "Concordo. Vamos mapear os maiores gastos."
+      }
+    ]
+  },
+  {
+    "id": 86,
+    "level": "advanced",
+    "type": "dialogue",
+    "focus": "disagreement",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "I think we should launch in Q1.",
+        "pt": "Acho que devemos lançar no primeiro trimestre."
+      },
+      {
+        "speaker": "B",
+        "en": "I'm not sure I agree. We're not ready yet.",
+        "pt": "Não tenho certeza se concordo. Ainda não estamos prontos."
+      },
+      {
+        "speaker": "A",
+        "en": "What do we need to be ready?",
+        "pt": "O que precisamos para estar prontos?"
+      },
+      {
+        "speaker": "B",
+        "en": "At minimum, a full round of testing.",
+        "pt": "No mínimo, uma rodada completa de testes."
+      }
+    ]
+  },
+  {
+    "id": 87,
+    "level": "advanced",
+    "type": "dialogue",
+    "focus": "career",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Where do you see yourself in five years?",
+        "pt": "Onde você se vê em cinco anos?"
+      },
+      {
+        "speaker": "B",
+        "en": "I'd like to be leading my own team.",
+        "pt": "Gostaria de liderar minha própria equipe."
+      },
+      {
+        "speaker": "A",
+        "en": "What are you doing to get there?",
+        "pt": "O que você está fazendo para chegar lá?"
+      },
+      {
+        "speaker": "B",
+        "en": "I'm developing my leadership and technical skills.",
+        "pt": "Estou desenvolvendo habilidades de liderança e técnicas."
+      }
+    ]
+  },
+  {
+    "id": 88,
+    "level": "advanced",
+    "type": "dialogue",
+    "focus": "challenge",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What is the biggest challenge you face at work?",
+        "pt": "Qual é o maior desafio que você enfrenta no trabalho?"
+      },
+      {
+        "speaker": "B",
+        "en": "Managing time and competing priorities.",
+        "pt": "Gerenciar o tempo e prioridades que competem entre si."
+      },
+      {
+        "speaker": "A",
+        "en": "How do you handle that?",
+        "pt": "Como você lida com isso?"
+      },
+      {
+        "speaker": "B",
+        "en": "I use a task list and block time in my calendar.",
+        "pt": "Uso uma lista de tarefas e bloqueio tempo na agenda."
+      }
+    ]
+  },
+  {
+    "id": 89,
+    "level": "advanced",
+    "type": "dialogue",
+    "focus": "values",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What is most important to you at work?",
+        "pt": "O que é mais importante para você no trabalho?"
+      },
+      {
+        "speaker": "B",
+        "en": "Being part of a team that communicates well.",
+        "pt": "Fazer parte de uma equipe que se comunica bem."
+      },
+      {
+        "speaker": "A",
+        "en": "What else matters to you?",
+        "pt": "O que mais importa para você?"
+      },
+      {
+        "speaker": "B",
+        "en": "Doing work that has a real impact.",
+        "pt": "Fazer um trabalho que tenha impacto real."
+      }
+    ]
+  },
+  {
+    "id": 90,
+    "level": "advanced",
+    "type": "dialogue",
+    "focus": "improvement",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "How can we improve our process?",
+        "pt": "Como podemos melhorar nosso processo?"
+      },
+      {
+        "speaker": "B",
+        "en": "I think we need better communication between teams.",
+        "pt": "Acho que precisamos de melhor comunicação entre equipes."
+      },
+      {
+        "speaker": "A",
+        "en": "Can you give an example?",
+        "pt": "Você pode dar um exemplo?"
+      },
+      {
+        "speaker": "B",
+        "en": "Sometimes design finishes something but dev doesn't know.",
+        "pt": "Às vezes o design termina algo mas o dev não sabe."
+      }
+    ]
+  },
+  {
+    "id": 91,
+    "level": "advanced",
+    "type": "dialogue",
+    "focus": "opportunity",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Should we take this new opportunity?",
+        "pt": "Devemos aproveitar essa nova oportunidade?"
+      },
+      {
+        "speaker": "B",
+        "en": "It depends. What are the risks?",
+        "pt": "Depende. Quais são os riscos?"
+      },
+      {
+        "speaker": "A",
+        "en": "The main risk is the upfront investment.",
+        "pt": "O principal risco é o investimento inicial."
+      },
+      {
+        "speaker": "B",
+        "en": "If the return is good, I say we go for it.",
+        "pt": "Se o retorno for bom, digo que vamos em frente."
+      }
+    ]
+  },
+  {
+    "id": 92,
+    "level": "advanced",
+    "type": "dialogue",
+    "focus": "risk",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What are the risks of launching too early?",
+        "pt": "Quais são os riscos de lançar cedo demais?"
+      },
+      {
+        "speaker": "B",
+        "en": "We could lose client trust if there are bugs.",
+        "pt": "Podemos perder a confiança do cliente se houver bugs."
+      },
+      {
+        "speaker": "A",
+        "en": "What do you suggest we do?",
+        "pt": "O que você sugere que façamos?"
+      },
+      {
+        "speaker": "B",
+        "en": "Run a private beta test first.",
+        "pt": "Fazer um teste beta privado primeiro."
+      }
+    ]
+  },
+  {
+    "id": 93,
+    "level": "advanced",
+    "type": "dialogue",
+    "focus": "teamwork",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "How do you work best – alone or in a team?",
+        "pt": "Como você trabalha melhor – sozinho ou em equipe?"
+      },
+      {
+        "speaker": "B",
+        "en": "It depends on the task. I like both.",
+        "pt": "Depende da tarefa. Gosto dos dois."
+      },
+      {
+        "speaker": "A",
+        "en": "When do you prefer to work alone?",
+        "pt": "Quando você prefere trabalhar sozinho?"
+      },
+      {
+        "speaker": "B",
+        "en": "When I need to focus deeply on something.",
+        "pt": "Quando preciso focar profundamente em algo."
+      }
+    ]
+  },
+  {
+    "id": 94,
+    "level": "advanced",
+    "type": "dialogue",
+    "focus": "innovation",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Do you have any ideas to improve the product?",
+        "pt": "Você tem ideias para melhorar o produto?"
+      },
+      {
+        "speaker": "B",
+        "en": "Yes, I think we should add a voice feature.",
+        "pt": "Sim, acho que deveríamos adicionar um recurso de voz."
+      },
+      {
+        "speaker": "A",
+        "en": "That's interesting. What would it do?",
+        "pt": "Isso é interessante. O que faria?"
+      },
+      {
+        "speaker": "B",
+        "en": "Allow users to practice speaking in real time.",
+        "pt": "Permitir que usuários pratiquem fala em tempo real."
+      }
+    ]
+  },
+  {
+    "id": 95,
+    "level": "advanced",
+    "type": "dialogue",
+    "focus": "change",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "How do you feel about the company changes?",
+        "pt": "Como você se sente sobre as mudanças na empresa?"
+      },
+      {
+        "speaker": "B",
+        "en": "A bit uncertain, but I understand the reasons.",
+        "pt": "Um pouco incerto, mas entendo os motivos."
+      },
+      {
+        "speaker": "A",
+        "en": "What concerns you most?",
+        "pt": "O que mais te preocupa?"
+      },
+      {
+        "speaker": "B",
+        "en": "Whether the team will stay together.",
+        "pt": "Se a equipe vai continuar unida."
+      }
+    ]
+  },
+  {
+    "id": 96,
+    "level": "advanced",
+    "type": "dialogue",
+    "focus": "goals",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What are you working towards this quarter?",
+        "pt": "O que você está buscando neste trimestre?"
+      },
+      {
+        "speaker": "B",
+        "en": "I want to improve our conversion rate by ten percent.",
+        "pt": "Quero melhorar nossa taxa de conversão em dez por cento."
+      },
+      {
+        "speaker": "A",
+        "en": "What is your strategy?",
+        "pt": "Qual é a sua estratégia?"
+      },
+      {
+        "speaker": "B",
+        "en": "Focus on user experience and reduce friction points.",
+        "pt": "Focar na experiência do usuário e reduzir pontos de atrito."
+      }
+    ]
+  },
+  {
+    "id": 97,
+    "level": "advanced",
+    "type": "dialogue",
+    "focus": "feedback",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "Can I give you some feedback?",
+        "pt": "Posso te dar um feedback?"
+      },
+      {
+        "speaker": "B",
+        "en": "Of course. I appreciate it.",
+        "pt": "Claro. Agradeço."
+      },
+      {
+        "speaker": "A",
+        "en": "Your presentations are great, but the pace is too fast.",
+        "pt": "Suas apresentações são ótimas, mas o ritmo é rápido demais."
+      },
+      {
+        "speaker": "B",
+        "en": "Thank you. I'll work on slowing down.",
+        "pt": "Obrigado. Vou trabalhar em desacelerar."
+      }
+    ]
+  },
+  {
+    "id": 98,
+    "level": "advanced",
+    "type": "dialogue",
+    "focus": "conflict",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "There's a conflict between two team members.",
+        "pt": "Há um conflito entre dois membros da equipe."
+      },
+      {
+        "speaker": "B",
+        "en": "What happened?",
+        "pt": "O que aconteceu?"
+      },
+      {
+        "speaker": "A",
+        "en": "They disagree about how to handle the project.",
+        "pt": "Eles discordam sobre como gerenciar o projeto."
+      },
+      {
+        "speaker": "B",
+        "en": "Let's bring them together and find common ground.",
+        "pt": "Vamos reuni-los e encontrar um terreno comum."
+      }
+    ]
+  },
+  {
+    "id": 99,
+    "level": "advanced",
+    "type": "dialogue",
+    "focus": "motivation",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What keeps you motivated at work?",
+        "pt": "O que te mantém motivado no trabalho?"
+      },
+      {
+        "speaker": "B",
+        "en": "Seeing the impact of what I do.",
+        "pt": "Ver o impacto do que faço."
+      },
+      {
+        "speaker": "A",
+        "en": "What does that look like for you?",
+        "pt": "Como isso se manifesta para você?"
+      },
+      {
+        "speaker": "B",
+        "en": "When users say the product changed how they work.",
+        "pt": "Quando usuários dizem que o produto mudou como trabalham."
+      }
+    ]
+  },
+  {
+    "id": 100,
+    "level": "advanced",
+    "type": "dialogue",
+    "focus": "reflection",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "en": "What did you learn this quarter?",
+        "pt": "O que você aprendeu neste trimestre?"
+      },
+      {
+        "speaker": "B",
+        "en": "I learned to delegate more and trust my team.",
+        "pt": "Aprendi a delegar mais e confiar na minha equipe."
+      },
+      {
+        "speaker": "A",
+        "en": "That's a big lesson. What changed?",
+        "pt": "Essa é uma grande lição. O que mudou?"
+      },
+      {
+        "speaker": "B",
+        "en": "The team performed better when I gave them space.",
+        "pt": "A equipe teve melhor desempenho quando dei espaço a eles."
+      }
+    ]
+  }
+]

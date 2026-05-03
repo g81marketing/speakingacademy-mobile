@@ -143,10 +143,8 @@ export async function evaluateSpeech(audioUri, expectedText) {
 
   const res = await fetch(`${API_URL}/speech/evaluate`, {
     method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${token}`,
-      'Content-Type': 'multipart/form-data',
-    },
+    // NÃO definir Content-Type manualmente — fetch precisa criar o boundary
+    headers: { 'Authorization': `Bearer ${token}` },
     body: formData,
   });
 

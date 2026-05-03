@@ -11,6 +11,7 @@ const missionRoutes  = require('./routes/missions');
 const progressRoutes = require('./routes/progress');
 const practiceRoutes = require('./routes/practice');
 const userRoutes     = require('./routes/user');
+const speechRoutes   = require('./routes/speech');
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
@@ -41,6 +42,7 @@ app.use('/missions', missionRoutes);
 app.use('/progress', progressRoutes);
 app.use('/practice', practiceRoutes);
 app.use('/user',     userRoutes);
+app.use('/speech',   speechRoutes);
 
 // ── Error handler global ──────────────────────────────────────────────────────
 app.use(errorHandler);

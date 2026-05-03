@@ -1,7 +1,6 @@
-// ⚠️ DEPRECATED — Transcrição Whisper é feita diretamente no app mobile.
-// O app envia apenas { phrase, userAnswer, score } para POST /practice.
-// Este arquivo não é mais importado pelo app.js.
-module.exports = {};
+// ─── SPEECH CONTROLLER ────────────────────────────────────────────────────────
+// Recebe áudio do app mobile e chama Whisper (OpenAI) via OPENAI_API_KEY do .env.
+// Mantém a chave segura no servidor — o app nunca a vê.
 
 // ── Levenshtein distance para calcular similaridade ───────────────────────────
 function levenshtein(a, b) {
@@ -34,7 +33,6 @@ function calculateScore(expected, transcript) {
 //   - audio   : arquivo de áudio (m4a, mp3, wav, webm)
 //   - expected: frase correta em inglês (string)
 exports.evaluate = async (req, res) => {
-  let filePath = null;
   try {
     if (!req.file)
       return res.status(400).json({ error: 'Arquivo de áudio não enviado.' });
@@ -43,39 +41,35 @@ exports.evaluate = async (req, res) => {
     if (!expected)
       return res.status(400).json({ error: 'Frase de referência (expected) não fornecida.' });
 
-    filePath = req.file.path;
+    if (!process.env.OPENAI_API_KEY)
+      return res.status(500).json({ error: 'OPENAI_API_KEY não configurada no servidor.' });
 
-    // ── Transcrição via OpenAI Whisper ────────────────────────────────────────
+    // ── Transcrição via OpenAI Whisper (FormData/Blob/fetch nativos do Node 18+)
     const form = new FormData();
-    form.append('file', fs.createReadStream(filePath), {
-      filename:    req.file.originalname || 'audio.m4a',
-      contentType: req.file.mimetype     || 'audio/m4a',
-    });
+    const blob = new Blob([req.file.buffer], { type: req.file.mimetype || 'audio/m4a' });
+    form.append('file', blob, req.file.originalname || 'recording.m4a');
     form.append('model',    'whisper-1');
     form.append('language', 'en');
+    form.append('response_format', 'text');
 
     const whisperRes = await fetch('https://api.openai.com/v1/audio/transcriptions', {
       method:  'POST',
-      headers: {
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-        ...form.getHeaders(),
-      },
+      headers: { Authorization: `Bearer ${process.env.OPENAI_API_KEY}` },
       body: form,
     });
 
     if (!whisperRes.ok) {
-      const err = await whisperRes.json().catch(() => ({}));
-      return res.status(502).json({ error: 'Erro na transcrição.', detail: err });
+      const detail = await whisperRes.text().catch(() => '');
+      console.error('[Whisper] HTTP', whisperRes.status, detail);
+      return res.status(502).json({ error: 'Erro na transcrição.', detail });
     }
 
-    const { text: transcript } = await whisperRes.json();
+    const transcript = (await whisperRes.text()).trim();
     const score = calculateScore(expected, transcript);
 
     res.json({ transcript, score });
   } catch (err) {
+    console.error('[Speech] erro:', err);
     res.status(500).json({ error: err.message });
-  } finally {
-    // Remover arquivo temporário após processamento
-    if (filePath && fs.existsSync(filePath)) fs.unlinkSync(filePath);
   }
 };

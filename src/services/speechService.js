@@ -1,29 +1,6 @@
 // ─── SERVIÇO DE RECONHECIMENTO DE VOZ ────────────────────────────────────────
-// Usa a API Whisper da OpenAI quando configurada; caso contrário, simula.
-import { OPENAI_API_KEY, WHISPER_ENDPOINT, isApiConfigured } from '../config/apiConfig';
-
-// ── Whisper API ───────────────────────────────────────────────────────────────
-async function transcribeWithWhisper(audioUri) {
-  const formData = new FormData();
-  formData.append('file', { uri: audioUri, type: 'audio/m4a', name: 'recording.m4a' });
-  formData.append('model', 'whisper-1');
-  formData.append('language', 'en');
-  formData.append('response_format', 'text');
-
-  const res = await fetch(WHISPER_ENDPOINT, {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${OPENAI_API_KEY}` },
-    body: formData,
-  });
-  if (!res.ok) {
-    const body = await res.text().catch(() => '');
-    console.error('[Whisper] erro HTTP', res.status, body);
-    throw new Error(`Whisper error ${res.status}: ${body}`);
-  }
-  const text = await res.text();
-  console.log('[Whisper] transcrição:', text.trim());
-  return text.trim();
-}
+// Chama o backend (que faz a ponte com Whisper). A chave OpenAI fica no servidor.
+import * as apiService from './api';
 
 // ── Simulação (modo demo) ─────────────────────────────────────────────────────
 function simulateTranscription(expectedPhrase) {
@@ -56,18 +33,15 @@ function simulateTranscription(expectedPhrase) {
 
 // ── Função principal ──────────────────────────────────────────────────────────
 // audioUri   – URI do arquivo gravado (pode ser null em testes)
-// expectedPhrase – frase esperada (usada apenas no modo demo)
+// expectedPhrase – frase esperada (usada como fallback no modo demo)
 export async function transcribeAudio(audioUri, expectedPhrase = '') {
-  if (isApiConfigured() && audioUri) {
+  if (audioUri) {
     try {
-      return await transcribeWithWhisper(audioUri);
+      const { transcript } = await apiService.evaluateSpeech(audioUri, expectedPhrase || '');
+      console.log('[Speech] transcrição (backend):', transcript);
+      return transcript;
     } catch (err) {
-      const msg = err?.message ?? '';
-      if (msg.includes('429') || msg.includes('insufficient_quota')) {
-        console.warn('[Whisper] Cota da API esgotada — usando simulação como fallback.');
-      } else {
-        console.warn('[Whisper] Falha na transcrição — usando simulação como fallback.', err);
-      }
+      console.warn('[Speech] Falha no backend — usando simulação como fallback.', err?.message);
     }
   }
   await new Promise(resolve => setTimeout(resolve, 300));

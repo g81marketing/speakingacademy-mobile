@@ -20,7 +20,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useApp } from '../context/AppContext';
 import { getBlockForDay } from '../data/phrases';
 import { BEGINNER_MISSIONS } from '../data/beginnerMissions';
-import { transcribeAudioFast, calculateScore } from '../services/speechService';
+import { transcribeAudio, calculateScore } from '../services/speechService';
 import { getMissionInfo, getMotivationalMessage, getStarsForScore, getReviewTip } from '../data/missions';
 import WaveformAnimation from '../components/WaveformAnimation';
 import ProgressBar from '../components/ProgressBar';
@@ -279,8 +279,8 @@ export default function BlockScreen() {
     let score = 0;
     let transcribed = '';
     try {
-      // Usa análise local rápida (200ms) para treino
-      transcribed = await transcribeAudioFast(phrase.english);
+      // Envia o áudio para o backend (Whisper) — fallback para simulação se falhar
+      transcribed = await transcribeAudio(audioUri, phrase.english);
       score = calculateScore(phrase.english, transcribed);
     } catch (err) {
       console.error('Erro na análise de fala:', err);
@@ -335,8 +335,8 @@ export default function BlockScreen() {
     let score = 0;
     let transcribed = '';
     try {
-      // Usa análise local rápida (200ms) para teste também
-      transcribed = await transcribeAudioFast(phrase.english);
+      // Envia o áudio para o backend (Whisper) — fallback para simulação se falhar
+      transcribed = await transcribeAudio(audioUri, phrase.english);
       score = calculateScore(phrase.english, transcribed);
     } catch (err) {
       console.error('Erro na análise de fala:', err);

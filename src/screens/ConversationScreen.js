@@ -15,7 +15,7 @@ import { useApp } from '../context/AppContext';
 import * as Speech from 'expo-speech';
 import { Audio } from 'expo-av';
 import { Ionicons } from '@expo/vector-icons';
-import { transcribeAudioFast, calculateScore } from '../services/speechService';
+import { transcribeAudio, calculateScore } from '../services/speechService';
 import { getStarsForScore, getMotivationalMessage } from '../data/missions';
 import SpeedSelector, { TTS_RATES } from '../components/SpeedSelector';
 
@@ -166,8 +166,9 @@ export default function ConversationScreen() {
       setIsAnalyzing(true);
       await recordingRef.current.stopAndUnloadAsync();
       await Audio.setAudioModeAsync({ allowsRecordingIOS: false });
-      const expected   = currentLine.en;
-      const transcript = await transcribeAudioFast(expected);
+      const audioUri  = recordingRef.current.getURI();
+      const expected  = currentLine.en;
+      const transcript = await transcribeAudio(audioUri, expected);
       const score      = calculateScore(expected, transcript);
       setLineScore(score);
       setResults(prev => [...prev, { lineIdx, score, expected, transcript }]);

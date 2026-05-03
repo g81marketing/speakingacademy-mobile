@@ -5,7 +5,7 @@
 // - Mac/Linux: abra terminal e digite: ifconfig
 // Procure por "IPv4" ou "inet" (ex: 192.168.1.7)
 
-export const API_URL = 'http://192.168.1.7:3000';
+export const API_URL = 'https://speakingacademy-mobile.onrender.com';
 
 // Se estiver testando no emulador Android, use:
 // export const API_URL = 'http://10.0.2.2:3000';

@@ -4,12 +4,15 @@ import { getLevelForDay, getPhaseForDay } from '../data/phrases';
 import { ACHIEVEMENTS, calcXpGained, getXpProgress } from '../data/achievements';
 import { getStarsForScore } from '../data/missions';
 import * as apiService from '../services/api';
+import { useAuth } from './AuthContext';
 
 const AppContext = createContext();
 
 export const useApp = () => useContext(AppContext);
 
-const STORAGE_KEY = '@speaking_academy_v4';
+const STORAGE_PREFIX = '@speaking_academy_v4';
+// Chave do storage varia por usuário — evita que o progresso de um seja visto por outro
+const keyForUser = (userId) => (userId ? `${STORAGE_PREFIX}_${userId}` : `${STORAGE_PREFIX}_guest`);
 
 const defaultState = {
   userName: 'Estudante',
@@ -52,39 +55,50 @@ const defaultState = {
 };
 
 export const AppProvider = ({ children }) => {
+  const { user } = useAuth();
+  const userId = user?.id ?? null;
+
   const [state, setState] = useState(defaultState);
   const [isLoaded, setIsLoaded] = useState(false);
   // Conquistas recém-desbloqueadas para mostrar toast
   const [newAchievements, setNewAchievements] = useState([]);
 
+  // Carrega estado sempre que o usuário muda (login/logout)
   useEffect(() => {
+    let cancelled = false;
+    setIsLoaded(false);
     const load = async () => {
       try {
-        const stored = await AsyncStorage.getItem(STORAGE_KEY);
+        const stored = await AsyncStorage.getItem(keyForUser(userId));
+        if (cancelled) return;
         if (stored) {
           const parsed = JSON.parse(stored);
-          // Migração: usuários existentes com nível já escolhido não devem refazer o onboarding
           if (parsed.userSelectedLevel && parsed.onboardingComplete === undefined) {
             parsed.onboardingComplete = true;
           }
-          setState((prev) => ({ ...prev, ...parsed }));
+          setState({ ...defaultState, ...parsed });
+        } else {
+          // Novo usuário: reseta para o estado padrão
+          setState(defaultState);
         }
       } catch (e) {
         console.log('Erro ao carregar dados:', e);
+        setState(defaultState);
       } finally {
-        setIsLoaded(true);
+        if (!cancelled) setIsLoaded(true);
       }
     };
     load();
-  }, []);
+    return () => { cancelled = true; };
+  }, [userId]);
 
   useEffect(() => {
     if (isLoaded) {
-      AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(state)).catch((e) =>
+      AsyncStorage.setItem(keyForUser(userId), JSON.stringify(state)).catch((e) =>
         console.log('Erro ao salvar dados:', e)
       );
     }
-  }, [state, isLoaded]);
+  }, [state, isLoaded, userId]);
 
   // Verifica se alguma conquista nova foi desbloqueada e retorna as novas
   const checkAchievements = (nextState) => {

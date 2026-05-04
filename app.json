@@ -36,12 +36,13 @@
       },
       "permissions": [
         "android.permission.RECORD_AUDIO",
-        "android.permission.INTERNET"
+        "android.permission.INTERNET",
+        "android.permission.MODIFY_AUDIO_SETTINGS"
       ]
     },
     "extra": {
       "eas": {
-        "projectId": "a6a6f9ab-145f-4485-a3e9-d69a5d00ab97"
+        "projectId": "ceeea286-9613-4231-8655-e77b526f2cdc"
       }
     }
   }

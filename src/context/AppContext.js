@@ -66,7 +66,10 @@ export const AppProvider = ({ children }) => {
   // Carrega estado sempre que o usuário muda (login/logout)
   useEffect(() => {
     let cancelled = false;
-    setIsLoaded(false);
+    // Só reseta isLoaded se ainda não carregou antes (evita crash no login)
+    const needsInitialLoad = !isLoaded;
+    if (needsInitialLoad) setIsLoaded(false);
+
     const load = async () => {
       try {
         const stored = await AsyncStorage.getItem(keyForUser(userId));
@@ -85,7 +88,7 @@ export const AppProvider = ({ children }) => {
         console.log('Erro ao carregar dados:', e);
         setState(defaultState);
       } finally {
-        if (!cancelled) setIsLoaded(true);
+        if (!cancelled && needsInitialLoad) setIsLoaded(true);
       }
     };
     load();

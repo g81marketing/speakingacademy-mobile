@@ -72,7 +72,21 @@ export const AppProvider = ({ children }) => {
 
     const load = async () => {
       try {
-        const stored = await AsyncStorage.getItem(keyForUser(userId));
+        const userKey  = keyForUser(userId);
+        const guestKey = keyForUser(null);
+        let stored = await AsyncStorage.getItem(userKey);
+
+        // Se acabou de fazer login (userId existe) e não tem dados próprios,
+        // migra o estado do guest (onboarding já concluído) para a chave do usuário
+        if (!stored && userId) {
+          const guestStored = await AsyncStorage.getItem(guestKey);
+          if (guestStored) {
+            stored = guestStored;
+            await AsyncStorage.setItem(userKey, guestStored);
+            await AsyncStorage.removeItem(guestKey);
+          }
+        }
+
         if (cancelled) return;
         if (stored) {
           const parsed = JSON.parse(stored);

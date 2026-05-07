@@ -29,9 +29,9 @@
     },
     "android": {
       "package": "com.speakingacademy.app",
-      "versionCode": 1,
+      "versionCode": 3,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/logo.png",
+        "foregroundImage": "./assets/images/icon-square.png",
         "backgroundColor": "#0A0818"
       },
       "permissions": [

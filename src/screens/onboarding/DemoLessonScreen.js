@@ -18,9 +18,9 @@ import { PURPLE, PINK, YELLOW, GREEN, RED, BG, CARD, BORDER, GRAY } from '../../
 const BLUE = PURPLE;
 
 const DEMO_PHRASE = {
-  english:    'Hello! How are you?',
-  portuguese: 'Olá! Como você está?',
-  phonetic:   'hê-lôu ráu ár iu',
+  english:    'Hello!',
+  portuguese: 'Olá!',
+  phonetic:   'hê-lôu',
 };
 
 const RECORDING_OPTIONS = {

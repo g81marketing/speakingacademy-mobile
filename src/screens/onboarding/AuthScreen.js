@@ -7,6 +7,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useApp } from '../../context/AppContext';
 import { useAuth } from '../../context/AuthContext';
 import LogoSpeaking from '../../components/LogoSpeaking';
@@ -48,11 +49,27 @@ export default function AuthScreen() {
       if (tab === 'signup' && !returning) {
         const { user } = await register(name.trim(), email.trim(), password);
         updateProfile(user.name);
+        navigation.navigate('Goal');
       } else {
         const { user } = await login(email.trim(), password);
         updateProfile(user.name);
+        // Lê o storage do usuário logado para decidir para onde ir
+        const STORAGE_PREFIX = '@speaking_academy_v4';
+        const userKey  = `${STORAGE_PREFIX}_${user.id}`;
+        const guestKey = `${STORAGE_PREFIX}_guest`;
+        let stored = await AsyncStorage.getItem(userKey);
+        if (!stored) stored = await AsyncStorage.getItem(guestKey);
+        let alreadyOnboarded = false;
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          alreadyOnboarded = !!(parsed.onboardingComplete && parsed.userSelectedLevel);
+        }
+        if (alreadyOnboarded) {
+          navigation.reset({ index: 0, routes: [{ name: 'Main' }] });
+        } else {
+          navigation.navigate('Goal');
+        }
       }
-      navigation.navigate('Goal');
     } catch (err) {
       setError(err.message || 'Erro ao autenticar. Tente novamente.');
     } finally {

@@ -52,7 +52,17 @@ const defaultState = {
   // ── Onboarding ───────────────────────────────────────────────
   onboardingComplete: false,
   userGoal: null,           // 'trabalho' | 'viagem' | 'iniciante' | 'conversacao'
+
+  // ── Speak AI — frases criadas pelo usuário ───────────────────
+  // [{ id, pt, en, phonetic, tip, date (YYYY-MM-DD), createdAt (ms) }]
+  aiPhrases: [],
 };
+
+// Limites do Speak AI
+export const SPEAK_AI_MAX_PER_DAY  = 20;
+export const SPEAK_AI_MAX_WORDS    = 10;
+
+const todayKey = () => new Date().toISOString().slice(0, 10); // YYYY-MM-DD
 
 export const AppProvider = ({ children }) => {
   const { user } = useAuth();
@@ -266,6 +276,55 @@ export const AppProvider = ({ children }) => {
     setState((prev) => ({ ...prev, userGoal: goal }));
   };
 
+  // ── Speak AI: adiciona uma frase criada hoje pelo usuário ──────────────────
+  // Retorna { ok: bool, reason?: string, phrase?: obj }
+  const addAiPhrase = ({ pt, en, phonetic = '', tip = '' }) => {
+    const ptTrim = (pt || '').trim();
+    if (!ptTrim) return { ok: false, reason: 'Frase em português vazia.' };
+
+    const wordCount = ptTrim.split(/\s+/).filter(Boolean).length;
+    if (wordCount > SPEAK_AI_MAX_WORDS)
+      return { ok: false, reason: `Limite de ${SPEAK_AI_MAX_WORDS} palavras por frase.` };
+
+    const today = todayKey();
+    const todayPhrases = (state.aiPhrases || []).filter((p) => p.date === today);
+    if (todayPhrases.length >= SPEAK_AI_MAX_PER_DAY)
+      return {
+        ok: false,
+        reason: `Você atingiu o limite de ${SPEAK_AI_MAX_PER_DAY} frases hoje. Apague alguma para criar uma nova.`,
+      };
+
+    const phrase = {
+      id: `${Date.now()}_${Math.random().toString(36).slice(2, 7)}`,
+      pt: ptTrim,
+      en: (en || '').trim(),
+      phonetic,
+      tip,
+      date: today,
+      createdAt: Date.now(),
+    };
+
+    setState((prev) => ({
+      ...prev,
+      aiPhrases: [phrase, ...(prev.aiPhrases || [])],
+    }));
+    return { ok: true, phrase };
+  };
+
+  const removeAiPhrase = (id) => {
+    setState((prev) => ({
+      ...prev,
+      aiPhrases: (prev.aiPhrases || []).filter((p) => p.id !== id),
+    }));
+  };
+
+  const clearAiPhrasesForDate = (date = todayKey()) => {
+    setState((prev) => ({
+      ...prev,
+      aiPhrases: (prev.aiPhrases || []).filter((p) => p.date !== date),
+    }));
+  };
+
   // Valores computados
   const currentLevel = getLevelForDay(state.currentDay);
   const currentPhase = getPhaseForDay(state.currentDay);
@@ -295,6 +354,9 @@ export const AppProvider = ({ children }) => {
         completeOnboarding,
         resetOnboarding,
         setUserGoal,
+        addAiPhrase,
+        removeAiPhrase,
+        clearAiPhrasesForDate,
       }}
     >
       {children}

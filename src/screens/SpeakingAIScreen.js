@@ -14,7 +14,10 @@ import { Audio } from 'expo-av';
 import { translatePhrase } from '../services/api';
 import { transcribeAudio } from '../services/speechService';
 import { calculateScore } from '../utils/similarity';
+import { useApp, SPEAK_AI_MAX_PER_DAY, SPEAK_AI_MAX_WORDS } from '../context/AppContext';
 import { PURPLE, PINK, YELLOW, GREEN, RED, BG, CARD, CARD2, BORDER, GRAY, GRAY2 } from '../theme/colors';
+
+const todayKey = () => new Date().toISOString().slice(0, 10);
 
 const SUGGESTED = [
   { icon: '💼', label: 'Business',     phrase: 'Vou participar da reunião amanhã.' },
@@ -40,10 +43,21 @@ const RECORDING_OPTIONS = {
 };
 
 export default function SpeakingAIScreen() {
+  const { aiPhrases, addAiPhrase, removeAiPhrase } = useApp();
+
   const [input, setInput]               = useState('');
   const [translating, setTranslating]   = useState(false);
   const [result, setResult]             = useState(null); // { pt, en, phonetic, tip }
   const [isSpeaking, setIsSpeaking]     = useState(false);
+
+  // Frases criadas hoje (mais recentes primeiro)
+  const today = todayKey();
+  const todayPhrases = (aiPhrases || []).filter((p) => p.date === today);
+  const dailyCount   = todayPhrases.length;
+  const reachedLimit = dailyCount >= SPEAK_AI_MAX_PER_DAY;
+
+  const wordCount = input.trim() ? input.trim().split(/\s+/).filter(Boolean).length : 0;
+  const tooManyWords = wordCount > SPEAK_AI_MAX_WORDS;
 
   const [isRecording, setIsRecording]   = useState(false);
   const [analyzing, setAnalyzing]       = useState(false);
@@ -77,25 +91,76 @@ export default function SpeakingAIScreen() {
       Alert.alert('Atenção', 'Digite uma frase em português primeiro.');
       return;
     }
+    const wc = phrase.split(/\s+/).filter(Boolean).length;
+    if (wc > SPEAK_AI_MAX_WORDS) {
+      Alert.alert(
+        'Frase muito longa',
+        `As frases devem ter no máximo ${SPEAK_AI_MAX_WORDS} palavras. A sua tem ${wc}.`,
+      );
+      return;
+    }
+    if (reachedLimit) {
+      Alert.alert(
+        'Limite diário atingido',
+        `Você já criou ${SPEAK_AI_MAX_PER_DAY} frases hoje. Apague alguma da lista para criar uma nova.`,
+      );
+      return;
+    }
+
     setTranslating(true);
     setFeedback(null);
     setResult(null);
     try {
       const data = await translatePhrase(phrase);
       if (!isMounted.current) return;
-      setResult({
+
+      const newResult = {
         pt: phrase,
         en: data.translation || '',
         phonetic: data.phonetic || '',
         tip: data.tip || '',
-      });
+      };
+
+      // Persiste na conta do usuário (lista do dia)
+      const saved = addAiPhrase(newResult);
+      if (!saved.ok) {
+        Alert.alert('Não foi possível salvar', saved.reason || 'Tente novamente.');
+        return;
+      }
+
+      setResult({ ...newResult, id: saved.phrase.id });
+      setInput('');
       // Auto-play da pronúncia
-      setTimeout(() => speakEnglish(data.translation || ''), 350);
+      setTimeout(() => speakEnglish(newResult.en), 350);
     } catch (e) {
       Alert.alert('Erro', e.message || 'Não foi possível traduzir.');
     } finally {
       if (isMounted.current) setTranslating(false);
     }
+  };
+
+  // Reabre uma frase salva (sem chamar API novamente)
+  const handleOpenSaved = (p) => {
+    setResult({ id: p.id, pt: p.pt, en: p.en, phonetic: p.phonetic, tip: p.tip });
+    setFeedback(null);
+    setTimeout(() => speakEnglish(p.en), 250);
+  };
+
+  const handleDeletePhrase = (id) => {
+    Alert.alert(
+      'Apagar frase',
+      'Tem certeza que deseja apagar esta frase da sua lista de hoje?',
+      [
+        { text: 'Cancelar', style: 'cancel' },
+        {
+          text: 'Apagar', style: 'destructive',
+          onPress: () => {
+            removeAiPhrase(id);
+            if (result?.id === id) setResult(null);
+          },
+        },
+      ],
+    );
   };
 
   // ── Text-to-speech ─────────────────────────────────────────────────────────
@@ -238,17 +303,32 @@ export default function SpeakingAIScreen() {
             />
           </View>
 
+          {/* Contadores: palavras + frases do dia */}
+          <View style={styles.metaRow}>
+            <Text style={[styles.metaWord, tooManyWords && { color: RED }]}>
+              {wordCount}/{SPEAK_AI_MAX_WORDS} palavras
+            </Text>
+            <Text style={[styles.metaCount, reachedLimit && { color: RED }]}>
+              {dailyCount}/{SPEAK_AI_MAX_PER_DAY} frases hoje
+            </Text>
+          </View>
+
           <TouchableOpacity
-            style={[styles.btnPrimary, (translating || !input.trim()) && { opacity: 0.6 }]}
+            style={[
+              styles.btnPrimary,
+              (translating || !input.trim() || tooManyWords || reachedLimit) && { opacity: 0.5 },
+            ]}
             onPress={() => handleTranslate()}
             activeOpacity={0.88}
-            disabled={translating || !input.trim()}
+            disabled={translating || !input.trim() || tooManyWords || reachedLimit}
           >
             {translating
               ? <ActivityIndicator color="#FFF" />
               : (<>
                   <Ionicons name="sparkles" size={18} color="#FFF" />
-                  <Text style={styles.btnPrimaryText}>Traduzir e praticar</Text>
+                  <Text style={styles.btnPrimaryText}>
+                    {reachedLimit ? 'Limite diário atingido' : 'Traduzir e praticar'}
+                  </Text>
                 </>)
             }
           </TouchableOpacity>
@@ -361,6 +441,47 @@ export default function SpeakingAIScreen() {
           </View>
         )}
 
+        {/* Frases do dia (criadas pelo usuário) */}
+        {todayPhrases.length > 0 && (
+          <>
+            <View style={styles.sectionHead}>
+              <Text style={styles.sectionLabel}>Suas frases de hoje</Text>
+              <View style={styles.sectionBadge}>
+                <Text style={styles.sectionBadgeText}>{dailyCount}/{SPEAK_AI_MAX_PER_DAY}</Text>
+              </View>
+            </View>
+
+            <View style={styles.phrasesList}>
+              {todayPhrases.map((p) => (
+                <View key={p.id} style={styles.phraseItem}>
+                  <TouchableOpacity
+                    style={styles.phraseItemMain}
+                    onPress={() => handleOpenSaved(p)}
+                    activeOpacity={0.85}
+                  >
+                    <Text style={styles.phraseItemEn} numberOfLines={1}>{p.en}</Text>
+                    <Text style={styles.phraseItemPt} numberOfLines={1}>{p.pt}</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={styles.phraseItemPlay}
+                    onPress={() => speakEnglish(p.en)}
+                    activeOpacity={0.7}
+                  >
+                    <Ionicons name="volume-medium" size={18} color={PURPLE} />
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={styles.phraseItemDel}
+                    onPress={() => handleDeletePhrase(p.id)}
+                    activeOpacity={0.7}
+                  >
+                    <Ionicons name="trash-outline" size={18} color={RED} />
+                  </TouchableOpacity>
+                </View>
+              ))}
+            </View>
+          </>
+        )}
+
         {/* Sugestões */}
         <Text style={styles.sectionLabel}>Frases para praticar</Text>
         <View style={styles.suggestRow}>
@@ -465,6 +586,13 @@ const styles = StyleSheet.create({
   },
   input: { fontSize: 15, color: '#FFFFFF', minHeight: 64, lineHeight: 22 },
 
+  metaRow: {
+    flexDirection: 'row', justifyContent: 'space-between',
+    alignItems: 'center', marginTop: -4,
+  },
+  metaWord:  { fontSize: 11, fontWeight: '700', color: GRAY, letterSpacing: 0.5 },
+  metaCount: { fontSize: 11, fontWeight: '700', color: GRAY, letterSpacing: 0.5 },
+
   btnPrimary: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
     gap: 10, backgroundColor: PURPLE, borderRadius: 16,
@@ -562,10 +690,43 @@ const styles = StyleSheet.create({
   },
   tipText: { flex: 1, fontSize: 12, color: YELLOW, fontWeight: '600', lineHeight: 18 },
 
-  // Sugestões
+  // Sugestões / lista do dia
+  sectionHead: {
+    flexDirection: 'row', alignItems: 'center',
+    justifyContent: 'space-between', marginBottom: 12, marginTop: 6,
+  },
   sectionLabel: {
     fontSize: 11, fontWeight: '900', color: GRAY,
     letterSpacing: 1.5, marginBottom: 12, marginTop: 6,
+  },
+  sectionBadge: {
+    backgroundColor: PURPLE + '22',
+    borderRadius: 10, paddingHorizontal: 10, paddingVertical: 3,
+    borderWidth: 1, borderColor: PURPLE + '55',
+  },
+  sectionBadgeText: {
+    fontSize: 11, fontWeight: '900', color: PURPLE, letterSpacing: 0.5,
+  },
+
+  phrasesList: { gap: 8, marginBottom: 18 },
+  phraseItem: {
+    flexDirection: 'row', alignItems: 'center',
+    backgroundColor: CARD, borderRadius: 14,
+    borderWidth: 1, borderColor: BORDER,
+    paddingVertical: 10, paddingHorizontal: 12, gap: 8,
+  },
+  phraseItemMain: { flex: 1, gap: 2 },
+  phraseItemEn:   { fontSize: 14, fontWeight: '700', color: '#FFFFFF' },
+  phraseItemPt:   { fontSize: 12, color: GRAY },
+  phraseItemPlay: {
+    width: 34, height: 34, borderRadius: 10,
+    backgroundColor: PURPLE + '18',
+    alignItems: 'center', justifyContent: 'center',
+  },
+  phraseItemDel: {
+    width: 34, height: 34, borderRadius: 10,
+    backgroundColor: RED + '18',
+    alignItems: 'center', justifyContent: 'center',
   },
   suggestRow: {
     flexDirection: 'row', flexWrap: 'wrap', gap: 10,

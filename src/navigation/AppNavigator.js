@@ -81,13 +81,13 @@ export default function AppNavigator() {
   // Aguarda o AsyncStorage carregar antes de montar o navigator
   if (!isLoaded || authLoading) return null;
 
-  const initialRoute = !onboardingComplete
+  // Se o usuário já está autenticado, pula o onboarding/Welcome.
+  // Só mostra Welcome para visitantes que nunca fizeram login.
+  const initialRoute = isAuthenticated
+    ? (userSelectedLevel == null ? 'LevelSelection' : 'Main')
+    : !onboardingComplete
     ? 'Welcome'
-    : !isAuthenticated
-    ? 'Auth'
-    : userSelectedLevel == null
-    ? 'LevelSelection'
-    : 'Main';
+    : 'Auth';
 
   return (
     <NavigationContainer>

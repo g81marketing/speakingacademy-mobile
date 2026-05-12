@@ -60,7 +60,7 @@ const defaultState = {
 
 // Limites do Speak AI
 export const SPEAK_AI_MAX_PER_DAY  = 20;
-export const SPEAK_AI_MAX_WORDS    = 10;
+export const SPEAK_AI_MAX_WORDS    = 15;
 
 const todayKey = () => new Date().toISOString().slice(0, 10); // YYYY-MM-DD
 

@@ -65,6 +65,7 @@ export default function SpeakingAIScreen() {
 
   const recordingRef = useRef(null);
   const isMounted    = useRef(true);
+  const scrollRef    = useRef(null);
   const pulseAnim    = useRef(new Animated.Value(1)).current;
 
   // ── Animated bar values for feedback (0–100) ────────────────────────────────
@@ -139,11 +140,15 @@ export default function SpeakingAIScreen() {
     }
   };
 
-  // Reabre uma frase salva (sem chamar API novamente)
+  // Reabre uma frase salva (sem chamar API novamente) e leva o foco ao topo
   const handleOpenSaved = (p) => {
     setResult({ id: p.id, pt: p.pt, en: p.en, phonetic: p.phonetic, tip: p.tip });
     setFeedback(null);
-    setTimeout(() => speakEnglish(p.en), 250);
+    // Sobe para mostrar o card de resultado com o botão "Repetir frase"
+    setTimeout(() => {
+      scrollRef.current?.scrollTo({ y: 0, animated: true });
+      speakEnglish(p.en);
+    }, 200);
   };
 
   const handleDeletePhrase = (id) => {
@@ -269,7 +274,7 @@ export default function SpeakingAIScreen() {
   // ── Render ─────────────────────────────────────────────────────────────────
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
-      <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
+      <ScrollView ref={scrollRef} contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
         {/* Header */}
         <View style={styles.header}>
           <View style={{ flex: 1 }}>
@@ -451,6 +456,10 @@ export default function SpeakingAIScreen() {
               </View>
             </View>
 
+            <Text style={styles.phrasesHint}>
+              Toque em uma frase para praticar novamente
+            </Text>
+
             <View style={styles.phrasesList}>
               {todayPhrases.map((p) => (
                 <View key={p.id} style={styles.phraseItem}>
@@ -459,8 +468,8 @@ export default function SpeakingAIScreen() {
                     onPress={() => handleOpenSaved(p)}
                     activeOpacity={0.85}
                   >
-                    <Text style={styles.phraseItemEn} numberOfLines={1}>{p.en}</Text>
-                    <Text style={styles.phraseItemPt} numberOfLines={1}>{p.pt}</Text>
+                    <Text style={styles.phraseItemEn} numberOfLines={2}>{p.en}</Text>
+                    <Text style={styles.phraseItemPt} numberOfLines={2}>{p.pt}</Text>
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={styles.phraseItemPlay}
@@ -468,6 +477,13 @@ export default function SpeakingAIScreen() {
                     activeOpacity={0.7}
                   >
                     <Ionicons name="volume-medium" size={18} color={PURPLE} />
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={styles.phraseItemPractice}
+                    onPress={() => handleOpenSaved(p)}
+                    activeOpacity={0.7}
+                  >
+                    <Ionicons name="mic" size={18} color="#FFF" />
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={styles.phraseItemDel}
@@ -723,10 +739,19 @@ const styles = StyleSheet.create({
     backgroundColor: PURPLE + '18',
     alignItems: 'center', justifyContent: 'center',
   },
+  phraseItemPractice: {
+    width: 34, height: 34, borderRadius: 10,
+    backgroundColor: PURPLE,
+    alignItems: 'center', justifyContent: 'center',
+  },
   phraseItemDel: {
     width: 34, height: 34, borderRadius: 10,
     backgroundColor: RED + '18',
     alignItems: 'center', justifyContent: 'center',
+  },
+  phrasesHint: {
+    fontSize: 12, color: GRAY, fontWeight: '500',
+    marginBottom: 10, marginTop: -4, fontStyle: 'italic',
   },
   suggestRow: {
     flexDirection: 'row', flexWrap: 'wrap', gap: 10,

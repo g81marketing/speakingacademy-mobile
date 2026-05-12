@@ -153,6 +153,18 @@ export async function evaluateSpeech(audioUri, expectedText) {
   return data; // { transcript, score }
 }
 
+// Traduz uma frase do português para inglês usando IA no backend
+export async function translatePhrase(text) {
+  const res = await fetch(`${API_URL}/speech/translate`, {
+    method: 'POST',
+    headers: await authHeaders(),
+    body: JSON.stringify({ text }),
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Erro na tradução');
+  return data; // { translation, phonetic, tip }
+}
+
 // ── GAMIFICATION ───────────────────────────────────────────────────────────────
 export async function addXp(amount) {
   const res = await fetch(`${API_URL}/gamification/xp`, {

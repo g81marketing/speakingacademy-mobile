@@ -12,6 +12,7 @@ const upload = multer({
 });
 
 const router = express.Router();
-router.post('/evaluate', auth, upload.single('audio'), speechController.evaluate);
+router.post('/evaluate',  auth, upload.single('audio'), speechController.evaluate);
+router.post('/translate', auth, express.json(), speechController.translate);
 
 module.exports = router;

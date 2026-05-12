@@ -9,6 +9,7 @@ import HomeScreen from '../screens/HomeScreen';
 import LibraryScreen from '../screens/LibraryScreen';
 import ProgressScreen from '../screens/ProgressScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import SpeakingAIScreen from '../screens/SpeakingAIScreen';
 import TrainingScreen from '../screens/TrainingScreen';
 import ResultScreen from '../screens/ResultScreen';
 import LevelSelectionScreen from '../screens/LevelSelectionScreen';
@@ -42,6 +43,7 @@ function MainTabs() {
           const icons = {
             Home: focused ? 'home' : 'home-outline',
             Biblioteca: focused ? 'library' : 'library-outline',
+            'Speaking AI': focused ? 'mic' : 'mic-outline',
             Progresso: focused ? 'bar-chart' : 'bar-chart-outline',
             Perfil: focused ? 'person' : 'person-outline',
           };
@@ -63,6 +65,7 @@ function MainTabs() {
     >
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Biblioteca" component={LibraryScreen} />
+      <Tab.Screen name="Speaking AI" component={SpeakingAIScreen} />
       <Tab.Screen name="Progresso" component={ProgressScreen} />
       <Tab.Screen name="Perfil" component={ProfileScreen} />
     </Tab.Navigator>

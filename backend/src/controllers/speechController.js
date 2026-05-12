@@ -73,3 +73,66 @@ exports.evaluate = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+// ── POST /speech/translate ─────────────────────────────────────────────────────
+// Traduz uma frase do português para o inglês usando GPT-4o-mini.
+// Body: { text: "frase em português" }
+// Resposta: { translation, phonetic, tip }
+exports.translate = async (req, res) => {
+  try {
+    const { text } = req.body || {};
+    if (!text || typeof text !== 'string' || !text.trim())
+      return res.status(400).json({ error: 'Texto em português não fornecido.' });
+
+    if (!process.env.OPENAI_API_KEY)
+      return res.status(500).json({ error: 'OPENAI_API_KEY não configurada no servidor.' });
+
+    const prompt = `Você é um professor de inglês. Traduza a frase abaixo do português para o inglês de forma natural e fluida (não literal). Responda APENAS em JSON válido, sem markdown, sem comentários.
+
+Frase: "${text.trim()}"
+
+Formato exato:
+{"translation":"<tradução em inglês>","phonetic":"<pronúncia simplificada em português, ex: ai níd tu fínix>","tip":"<dica curta de 1 frase em português sobre como pronunciar bem>"}`;
+
+    const gptRes = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'gpt-4o-mini',
+        temperature: 0.3,
+        messages: [{ role: 'user', content: prompt }],
+      }),
+    });
+
+    if (!gptRes.ok) {
+      const detail = await gptRes.text().catch(() => '');
+      console.error('[GPT] HTTP', gptRes.status, detail);
+      return res.status(502).json({ error: 'Erro na tradução.', detail });
+    }
+
+    const data = await gptRes.json();
+    const raw = data?.choices?.[0]?.message?.content?.trim() || '';
+    // Remove eventuais ```json fences
+    const clean = raw.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '').trim();
+
+    let parsed;
+    try {
+      parsed = JSON.parse(clean);
+    } catch {
+      // Fallback: usa o texto bruto como tradução
+      parsed = { translation: clean, phonetic: '', tip: '' };
+    }
+
+    res.json({
+      translation: parsed.translation || '',
+      phonetic:    parsed.phonetic    || '',
+      tip:         parsed.tip         || '',
+    });
+  } catch (err) {
+    console.error('[Translate] erro:', err);
+    res.status(500).json({ error: err.message });
+  }
+};

@@ -229,13 +229,6 @@ export default function HomeScreen() {
           {/* Barra XP */}
           {xpInfo && <XpBar xpInfo={xpInfo} color={pathColor} />}
 
-          {/* Conversas do nível */}
-          <Text style={styles.sectionLabel}>💬 Conversas</Text>
-          {conversationsForLevel.slice(0, 5).map((blk) => (
-            <ConversationCard key={blk.id} block={blk} color={pathColor}
-              onStart={() => handleStartConversation(blk)} />
-          ))}
-
           <Text style={styles.sectionLabel}>🎯 Escolha o Assunto</Text>
           <View style={styles.topicGrid}>
             {TOPICS.map((t) => {

@@ -43,7 +43,7 @@ function MainTabs() {
           const icons = {
             Home: focused ? 'home' : 'home-outline',
             Biblioteca: focused ? 'library' : 'library-outline',
-            'Speaking AI': focused ? 'mic' : 'mic-outline',
+            'Speak AI': focused ? 'mic' : 'mic-outline',
             Progresso: focused ? 'bar-chart' : 'bar-chart-outline',
             Perfil: focused ? 'person' : 'person-outline',
           };
@@ -59,13 +59,13 @@ function MainTabs() {
           paddingTop: 6,
           height: tabBarHeight,
         },
-        tabBarLabelStyle: { fontSize: 11, fontWeight: '700' },
+        tabBarLabelStyle: { fontSize: 10, fontWeight: '700' },
         headerShown: false,
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Biblioteca" component={LibraryScreen} />
-      <Tab.Screen name="Speaking AI" component={SpeakingAIScreen} />
+      <Tab.Screen name="Speak AI" component={SpeakingAIScreen} />
       <Tab.Screen name="Progresso" component={ProgressScreen} />
       <Tab.Screen name="Perfil" component={ProfileScreen} />
     </Tab.Navigator>

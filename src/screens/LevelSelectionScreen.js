@@ -7,11 +7,13 @@ import {
   ScrollView,
   Animated,
   Dimensions,
+  Alert,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { useApp } from '../context/AppContext';
+import { useAuth } from '../context/AuthContext';
 import { PURPLE, PINK, YELLOW, GREEN, BG, CARD, BORDER, GRAY } from '../theme/colors';
 
 const { width } = Dimensions.get('window');
@@ -69,8 +71,35 @@ export default function LevelSelectionScreen() {
   const route        = useRoute();
   const fromOnboarding = route.params?.fromOnboarding ?? false;
   const { setUserLevel } = useApp();
+  const { isPremium }    = useAuth();
 
   const handleSelect = (levelId) => {
+    // Free → só tem acesso ao beginner
+    if (!isPremium && levelId !== 'beginner') {
+      Alert.alert(
+        'Recurso Premium',
+        'Os níveis Intermediário e Avançado estão disponíveis apenas no plano Premium.\n\nFaça o upgrade no seu perfil para desbloquear.',
+        [
+          { text: 'Voltar', style: 'cancel' },
+          {
+            text: 'Ver Premium',
+            onPress: () => {
+              if (fromOnboarding) {
+                setUserLevel('beginner');
+                navigation.navigate('MicPermission');
+              } else {
+                navigation.reset({
+                  index: 0,
+                  routes: [{ name: 'Main', params: { screen: 'Perfil' } }],
+                });
+              }
+            },
+          },
+        ],
+      );
+      return;
+    }
+
     setUserLevel(levelId);
     if (fromOnboarding) {
       navigation.navigate('MicPermission');
@@ -100,6 +129,7 @@ export default function LevelSelectionScreen() {
             key={level.id}
             level={level}
             delay={index * 100}
+            locked={!isPremium && level.id !== 'beginner'}
             onPress={() => handleSelect(level.id)}
           />
         ))}
@@ -112,7 +142,7 @@ export default function LevelSelectionScreen() {
   );
 }
 
-function LevelCard({ level, delay, onPress }) {
+function LevelCard({ level, delay, onPress, locked = false }) {
   const scaleAnim = useRef(new Animated.Value(1)).current;
 
   const handlePressIn = () => {
@@ -125,7 +155,11 @@ function LevelCard({ level, delay, onPress }) {
   return (
     <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
       <TouchableOpacity
-        style={[styles.card, { borderColor: level.color + '55', backgroundColor: CARD }]}
+        style={[
+          styles.card,
+          { borderColor: level.color + '55', backgroundColor: CARD },
+          locked && styles.cardLocked,
+        ]}
         onPress={onPress}
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
@@ -141,12 +175,20 @@ function LevelCard({ level, delay, onPress }) {
             <View style={styles.cardTitleBlock}>
               <Text style={[styles.cardLabel, { color: level.color }]}>{level.label}</Text>
               <View style={[styles.tagBadge, { backgroundColor: level.color + '22' }]}>
-                <Text style={[styles.tagText, { color: level.color }]}>{level.tag}</Text>
+                <Text style={[styles.tagText, { color: level.color }]}>
+                  {locked ? 'PREMIUM' : level.tag}
+                </Text>
               </View>
             </View>
-            <View style={[styles.chooseBadge, { backgroundColor: level.color }]}>
-              <Text style={styles.chooseBadgeText}>Escolher</Text>
-            </View>
+            {locked ? (
+              <View style={styles.lockBadge}>
+                <Ionicons name="lock-closed" size={16} color="#FFF" />
+              </View>
+            ) : (
+              <View style={[styles.chooseBadge, { backgroundColor: level.color }]}>
+                <Text style={styles.chooseBadgeText}>Escolher</Text>
+              </View>
+            )}
           </View>
 
           <Text style={styles.cardDescription}>{level.description}</Text>
@@ -159,6 +201,15 @@ function LevelCard({ level, delay, onPress }) {
               </View>
             ))}
           </View>
+
+          {locked && (
+            <View style={styles.lockedHint}>
+              <Ionicons name="star" size={14} color={YELLOW} />
+              <Text style={styles.lockedHintText}>
+                Disponível no plano Premium
+              </Text>
+            </View>
+          )}
         </View>
       </TouchableOpacity>
     </Animated.View>
@@ -202,6 +253,21 @@ const styles = StyleSheet.create({
   tagText: { fontSize: 10, fontWeight: '800', letterSpacing: 1 },
   chooseBadge: { borderRadius: 12, paddingHorizontal: 14, paddingVertical: 9 },
   chooseBadgeText: { fontSize: 13, fontWeight: '800', color: '#FFFFFF' },
+  lockBadge: {
+    width: 36, height: 36, borderRadius: 12,
+    backgroundColor: '#1F1F2E',
+    alignItems: 'center', justifyContent: 'center',
+    borderWidth: 1, borderColor: BORDER,
+  },
+  cardLocked: { opacity: 0.78 },
+  lockedHint: {
+    flexDirection: 'row', alignItems: 'center', gap: 6,
+    backgroundColor: YELLOW + '12',
+    borderWidth: 1, borderColor: YELLOW + '44',
+    borderRadius: 10, paddingHorizontal: 10, paddingVertical: 7,
+    marginTop: 6,
+  },
+  lockedHintText: { fontSize: 12, fontWeight: '700', color: YELLOW },
   cardDescription: { fontSize: 14, color: GRAY, lineHeight: 21, fontWeight: '400' },
 
   featureList: { gap: 10 },

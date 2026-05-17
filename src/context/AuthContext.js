@@ -84,17 +84,29 @@ export function AuthProvider({ children }) {
     }
   };
 
+  // Atualiza o plano do usuário (free | premium) e persiste localmente
+  const updatePlan = async (plan) => {
+    const updatedUser = await apiService.updatePlan(plan);
+    setUser(updatedUser);
+    await AsyncStorage.setItem(USER_KEY, JSON.stringify(updatedUser));
+    return updatedUser;
+  };
+
+  const isPremium = user?.plan === 'premium';
+
   return (
     <AuthContext.Provider
       value={{
         token,
         user,
         isAuthenticated: !!token,
+        isPremium,
         isLoading,
         register,
         login,
         logout,
         refreshUser,
+        updatePlan,
       }}
     >
       {children}

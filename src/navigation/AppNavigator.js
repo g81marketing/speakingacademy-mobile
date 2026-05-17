@@ -31,10 +31,11 @@ const PURPLE = '#7B2FFF';
 const GRAY   = '#555577';
 const BG_TAB = '#07050F';
 
-// Navegador de abas inferiores: Home | Biblioteca | Progresso | Perfil
+// Navegador de abas inferiores: Home | Biblioteca | (Speak AI) | Progresso | Perfil
 function MainTabs() {
   const insets = useSafeAreaInsets();
   const tabBarHeight = 62 + insets.bottom;
+  const { isPremium } = useAuth();
 
   return (
     <Tab.Navigator
@@ -65,7 +66,9 @@ function MainTabs() {
     >
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Biblioteca" component={LibraryScreen} />
-      <Tab.Screen name="Speak AI" component={SpeakingAIScreen} />
+      {isPremium && (
+        <Tab.Screen name="Speak AI" component={SpeakingAIScreen} />
+      )}
       <Tab.Screen name="Progresso" component={ProgressScreen} />
       <Tab.Screen name="Perfil" component={ProfileScreen} />
     </Tab.Navigator>
@@ -76,15 +79,20 @@ function MainTabs() {
 // initialRouteName controlado pelo nível escolhido pelo aluno
 export default function AppNavigator() {
   const { userSelectedLevel, onboardingComplete, isLoaded } = useApp();
-  const { isAuthenticated, isLoading: authLoading } = useAuth();
+  const { isAuthenticated, isPremium, isLoading: authLoading } = useAuth();
 
   // Aguarda o AsyncStorage carregar antes de montar o navigator
   if (!isLoaded || authLoading) return null;
 
   // Se o usuário já está autenticado, pula o onboarding/Welcome.
-  // Só mostra Welcome para visitantes que nunca fizeram login.
+  // Free users só podem ter nível 'beginner' — se vierem com intermediário/avançado
+  // de uma sessão antiga, mandamos para a seleção de nível.
+  const needsLevelPick =
+    userSelectedLevel == null ||
+    (!isPremium && userSelectedLevel !== 'beginner');
+
   const initialRoute = isAuthenticated
-    ? (userSelectedLevel == null ? 'LevelSelection' : 'Main')
+    ? (needsLevelPick ? 'LevelSelection' : 'Main')
     : !onboardingComplete
     ? 'Welcome'
     : 'Auth';

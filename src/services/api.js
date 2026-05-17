@@ -153,6 +153,18 @@ export async function evaluateSpeech(audioUri, expectedText) {
   return data; // { transcript, score }
 }
 
+// Atualiza o plano do usuário (free | premium)
+export async function updatePlan(plan) {
+  const res = await fetch(`${API_URL}/user/plan`, {
+    method: 'PATCH',
+    headers: await authHeaders(),
+    body: JSON.stringify({ plan }),
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Erro ao atualizar plano');
+  return data.user;
+}
+
 // Traduz uma frase do português para inglês usando IA no backend
 export async function translatePhrase(text) {
   const res = await fetch(`${API_URL}/speech/translate`, {

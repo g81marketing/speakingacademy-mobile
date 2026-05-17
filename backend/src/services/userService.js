@@ -41,4 +41,10 @@ async function updateProfile(userId, { name, level }) {
   return userRepo.update(userId, data);
 }
 
-module.exports = { getProfile, updateProfile };
+async function updatePlan(userId, plan) {
+  if (!['free', 'premium'].includes(plan))
+    throw new AppError('Plano inválido.');
+  return userRepo.update(userId, { plan });
+}
+
+module.exports = { getProfile, updateProfile, updatePlan };

@@ -29,12 +29,43 @@ const LEVEL_LABELS_UI = {
 export default function ProfileScreen() {
   const navigation = useNavigation();
   const {
-    userName, plan, streak, totalPhrasesPracticed,
+    userName, streak, totalPhrasesPracticed,
     xp, xpInfo, achievements, currentDay, completedDays,
     challengeMode, toggleChallengeMode, updateProfile,
     userSelectedLevel, resetOnboarding,
   } = useApp();
-  const { logout } = useAuth();
+  const { logout, user, isPremium, updatePlan } = useAuth();
+  // Plano vindo do backend: 'free' | 'premium' → rótulo capitalizado
+  const plan = isPremium ? 'Premium' : 'Free';
+  const [upgrading, setUpgrading] = useState(false);
+
+  const handleUpgrade = () => {
+    if (isPremium) {
+      Alert.alert('Premium ativo', 'Você já tem acesso a todos os recursos premium. 🎉');
+      return;
+    }
+    Alert.alert(
+      '✨ Upgrade para Premium',
+      'Desbloqueie:\n\n• Níveis Intermediário e Avançado\n• Modo Speak AI (tradutor + tutor de pronúncia)\n• Todas as categorias e relatórios\n\nDeseja ativar agora?',
+      [
+        { text: 'Agora não', style: 'cancel' },
+        {
+          text: 'Ativar Premium',
+          onPress: async () => {
+            try {
+              setUpgrading(true);
+              await updatePlan('premium');
+              Alert.alert('🎉 Bem-vindo ao Premium!', 'Todos os recursos foram desbloqueados.');
+            } catch (e) {
+              Alert.alert('Erro', e.message || 'Não foi possível atualizar o plano.');
+            } finally {
+              setUpgrading(false);
+            }
+          },
+        },
+      ],
+    );
+  };
   const [editing, setEditing] = useState(false);
   const [tempName, setTempName] = useState(userName);
 
@@ -214,16 +245,13 @@ export default function ProfileScreen() {
           </View>
 
           <MenuItem
-            icon="diamond-outline"
-            label="Upgrade para Premium"
-            description="Acesse todos os níveis e categorias"
+            icon={isPremium ? 'star' : 'diamond-outline'}
+            label={isPremium ? 'Premium ativo ✨' : (upgrading ? 'Ativando...' : 'Upgrade para Premium')}
+            description={isPremium
+              ? 'Você tem acesso a todos os recursos'
+              : 'Desbloqueia Speak AI, Intermediário e Avançado'}
             blue
-            onPress={() =>
-              Alert.alert(
-                '✨ Premium',
-                'Tenha acesso ilimitado a todas as frases, categorias e relatórios detalhados.\n\nEm breve disponível!'
-              )
-            }
+            onPress={handleUpgrade}
           />
           <MenuItem
             icon="notifications-outline"

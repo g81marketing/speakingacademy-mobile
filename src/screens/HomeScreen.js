@@ -10,12 +10,15 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { useApp } from '../context/AppContext';
+import { useAuth } from '../context/AuthContext';
 import { getBlockForDay, getBlocksByCategory } from '../data/phrases';
 import { BEGINNER_MISSIONS } from '../data/beginnerMissions';
 import conversationBlocks from '../data/conversationBlocks.json';
 import { getMissionInfo, isMissionUnlocked } from '../data/missions';
 import LogoSpeaking from '../components/LogoSpeaking';
 import { DumbbellIcon } from '../components/GymDecor';
+import PremiumBanner from '../components/PremiumBanner';
+import UpgradeModal from '../components/UpgradeModal';
 import { PURPLE, PINK, YELLOW, GREEN, BG, CARD, BORDER, GRAY } from '../theme/colors';
 
 const BLUE = PURPLE;
@@ -47,6 +50,8 @@ const TOPICS = [
 
 export default function HomeScreen() {
   const navigation    = useNavigation();
+  const { isPremium } = useAuth();
+  const [showUpgrade, setShowUpgrade] = useState(false);
   const {
     userName,
     streak,
@@ -203,7 +208,20 @@ export default function HomeScreen() {
             );
           })}
 
+          {/* Banner Premium para usuários Free */}
+          {!isPremium && (
+            <PremiumBanner
+              onPress={() => setShowUpgrade(true)}
+              style={{ marginTop: 16 }}
+            />
+          )}
+
         </ScrollView>
+
+        <UpgradeModal
+          visible={showUpgrade}
+          onClose={() => setShowUpgrade(false)}
+        />
       </SafeAreaView>
     );
   }
@@ -252,6 +270,19 @@ export default function HomeScreen() {
               );
             })}
           </View>
+
+          {/* Banner Premium para usuários Free */}
+          {!isPremium && (
+            <PremiumBanner
+              onPress={() => setShowUpgrade(true)}
+              style={{ marginTop: 8 }}
+            />
+          )}
+
+          <UpgradeModal
+            visible={showUpgrade}
+            onClose={() => setShowUpgrade(false)}
+          />
         </ScrollView>
       </SafeAreaView>
     );
@@ -297,7 +328,20 @@ export default function HomeScreen() {
             />
           ))
         )}
+
+        {/* Banner Premium para usuários Free */}
+        {!isPremium && (
+          <PremiumBanner
+            onPress={() => setShowUpgrade(true)}
+            style={{ marginTop: 16 }}
+          />
+        )}
       </ScrollView>
+
+      <UpgradeModal
+        visible={showUpgrade}
+        onClose={() => setShowUpgrade(false)}
+      />
     </SafeAreaView>
   );
 }

@@ -49,7 +49,7 @@ export default function AuthScreen() {
       if (tab === 'signup' && !returning) {
         const { user } = await register(name.trim(), email.trim(), password);
         updateProfile(user.name);
-        navigation.navigate('Goal');
+        navigation.navigate('Plans', { fromRegister: true });
       } else {
         const { user } = await login(email.trim(), password);
         updateProfile(user.name);

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import {
   View,
   Text,
@@ -14,6 +14,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { useApp } from '../context/AppContext';
 import { useAuth } from '../context/AuthContext';
+import UpgradeModal from '../components/UpgradeModal';
 import { PURPLE, PINK, YELLOW, GREEN, BG, CARD, BORDER, GRAY } from '../theme/colors';
 
 const { width } = Dimensions.get('window');
@@ -72,31 +73,12 @@ export default function LevelSelectionScreen() {
   const fromOnboarding = route.params?.fromOnboarding ?? false;
   const { setUserLevel } = useApp();
   const { isPremium }    = useAuth();
+  const [showUpgrade, setShowUpgrade] = useState(false);
 
   const handleSelect = (levelId) => {
     // Free → só tem acesso ao beginner
     if (!isPremium && levelId !== 'beginner') {
-      Alert.alert(
-        'Recurso Premium',
-        'Os níveis Intermediário e Avançado estão disponíveis apenas no plano Premium.\n\nFaça o upgrade no seu perfil para desbloquear.',
-        [
-          { text: 'Voltar', style: 'cancel' },
-          {
-            text: 'Ver Premium',
-            onPress: () => {
-              if (fromOnboarding) {
-                setUserLevel('beginner');
-                navigation.navigate('MicPermission');
-              } else {
-                navigation.reset({
-                  index: 0,
-                  routes: [{ name: 'Main', params: { screen: 'Perfil' } }],
-                });
-              }
-            },
-          },
-        ],
-      );
+      setShowUpgrade(true);
       return;
     }
 
@@ -138,6 +120,7 @@ export default function LevelSelectionScreen() {
           Você pode mudar de nível a qualquer momento no Perfil.
         </Text>
       </ScrollView>
+      <UpgradeModal visible={showUpgrade} onClose={() => setShowUpgrade(false)} />
     </SafeAreaView>
   );
 }

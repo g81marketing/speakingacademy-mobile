@@ -25,6 +25,25 @@ enum Plan {
   premium
 }
 
+enum SubscriptionStatus {
+  none         // nunca assinou
+  pending      // checkout iniciado, aguardando pagamento
+  active       // ativo e pago
+  cancelled    // cancelado pelo usuário (acesso até expirar)
+  expired      // expirou (rebaixado para free)
+  payment_failed // pagamento recorrente falhou
+}
+
+// Origem do pagamento — permite coexistência entre:
+// - mercadopago: assinaturas feitas no SITE (web)
+// - google_play: assinaturas feitas dentro do APP Android (Play Billing)
+// - apple:       futuro (App Store / StoreKit)
+enum PaymentProvider {
+  mercadopago
+  google_play
+  apple
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // 1. USERS
 // ─────────────────────────────────────────────────────────────────────────────
@@ -42,6 +61,24 @@ model User {
   lastTrainedAt DateTime? @map("last_trained_at")
   createdAt    DateTime @default(now()) @map("created_at")
   updatedAt    DateTime @updatedAt     @map("updated_at")
+
+  // ── Assinatura (camada unificada) ─────────────────────────────────────────
+  // plan + subscriptionStatus + subscriptionExpiresAt são a FONTE DA VERDADE,
+  // independente de qual provedor originou a assinatura.
+  subscriptionStatus    SubscriptionStatus @default(none) @map("subscription_status")
+  subscriptionExpiresAt DateTime?          @map("subscription_expires_at")
+
+  // Provedor que originou a assinatura ativa (evita cobrança dupla MP x Google)
+  paymentProvider       PaymentProvider?   @map("payment_provider")
+
+  // ── Mercado Pago (assinaturas vindas do site) ─────────────────────────────
+  paymentCustomerId     String?            @map("payment_customer_id")     // payer_id ou email no MP
+  paymentSubscriptionId String?            @map("payment_subscription_id") // preapproval_id no MP
+
+  // ── Google Play Billing (assinaturas vindas do app Android) ───────────────
+  googlePurchaseToken   String?            @map("google_purchase_token")   // token retornado pela compra (a validar)
+  googleProductId       String?            @map("google_product_id")       // SKU do produto (ex: premium_monthly)
+  googleOrderId         String?            @map("google_order_id")         // orderId da transação
 
   // Relations
   progress       UserProgress[]

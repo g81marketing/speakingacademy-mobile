@@ -17,7 +17,9 @@
         {
           "microphonePermission": "O Speaking Academy precisa do microfone para avaliar sua pronúncia."
         }
-      ]
+      ],
+      "expo-web-browser",
+      "expo-font"
     ],
     "ios": {
       "supportsTablet": false,
@@ -29,7 +31,7 @@
     },
     "android": {
       "package": "com.speakingacademy.app",
-      "versionCode": 3,
+      "versionCode": 4,
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/icon-square.png",
         "backgroundColor": "#0A0818"
@@ -42,7 +44,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "ceeea286-9613-4231-8655-e77b526f2cdc"
+        "projectId": "07bba715-0799-4263-90e6-9da8b7b201e4"
       }
     }
   }

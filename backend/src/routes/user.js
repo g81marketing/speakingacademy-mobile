@@ -5,7 +5,6 @@ const auth    = require('../middleware/auth');
 const {
   getProfile,
   updateValidate, updateProfile,
-  updatePlanValidate, updatePlan,
 } = require('../controllers/userController');
 
 router.use(auth);
@@ -16,7 +15,7 @@ router.get('/profile', getProfile);
 // PATCH /user/profile — atualiza name e/ou level
 router.patch('/profile', updateValidate, updateProfile);
 
-// PATCH /user/plan — atualiza plano (free | premium)
-router.patch('/plan', updatePlanValidate, updatePlan);
+// NOTA: O upgrade de plano agora é feito via /subscription/checkout → webhook do MP.
+// Não existe mais endpoint para alterar o plano manualmente (segurança).
 
 module.exports = router;

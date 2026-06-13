@@ -15,6 +15,7 @@ import { translatePhrase } from '../services/api';
 import { transcribeAudio } from '../services/speechService';
 import { calculateScore } from '../utils/similarity';
 import { useApp, SPEAK_AI_MAX_PER_DAY, SPEAK_AI_MAX_WORDS } from '../context/AppContext';
+import LockedContent from '../components/LockedContent';
 import { PURPLE, PINK, YELLOW, GREEN, RED, BG, CARD, CARD2, BORDER, GRAY, GRAY2 } from '../theme/colors';
 
 const todayKey = () => new Date().toISOString().slice(0, 10);
@@ -273,24 +274,25 @@ export default function SpeakingAIScreen() {
 
   // ── Render ─────────────────────────────────────────────────────────────────
   return (
-    <SafeAreaView style={styles.container} edges={['top']}>
-      <ScrollView ref={scrollRef} contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
-        {/* Header */}
-        <View style={styles.header}>
-          <View style={{ flex: 1 }}>
-            <Text style={styles.kicker}>SPEAKING AI</Text>
-            <Text style={styles.title}>Treine inglês com IA</Text>
-            <Text style={styles.subtitle}>
-              Transforme frases da sua rotina em prática real de speaking.
-            </Text>
-          </View>
-          <View style={styles.headerIconWrap}>
-            <View style={styles.headerIconGlow} />
-            <View style={styles.headerIcon}>
-              <Ionicons name="mic" size={26} color="#FFF" />
+    <LockedContent feature="Speak AI" description="Tradutor inteligente e tutor de pronúncia com IA.">
+      <SafeAreaView style={styles.container} edges={['top']}>
+        <ScrollView ref={scrollRef} contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
+          {/* Header */}
+          <View style={styles.header}>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.kicker}>SPEAKING AI</Text>
+              <Text style={styles.title}>Treine inglês com IA</Text>
+              <Text style={styles.subtitle}>
+                Transforme frases da sua rotina em prática real de speaking.
+              </Text>
+            </View>
+            <View style={styles.headerIconWrap}>
+              <View style={styles.headerIconGlow} />
+              <View style={styles.headerIcon}>
+                <Ionicons name="mic" size={26} color="#FFF" />
+              </View>
             </View>
           </View>
-        </View>
 
         {/* Card principal */}
         <View style={styles.mainCard}>
@@ -516,6 +518,7 @@ export default function SpeakingAIScreen() {
         </View>
       </ScrollView>
     </SafeAreaView>
+    </LockedContent>
   );
 }
 

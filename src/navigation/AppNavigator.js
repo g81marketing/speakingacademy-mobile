@@ -17,6 +17,7 @@ import BlockScreen from '../screens/BlockScreen';
 import ConversationScreen from '../screens/ConversationScreen';
 import WelcomeScreen from '../screens/onboarding/WelcomeScreen';
 import AuthScreen from '../screens/onboarding/AuthScreen';
+import PlansScreen from '../screens/PlansScreen';
 import GoalScreen from '../screens/onboarding/GoalScreen';
 import MicPermissionScreen from '../screens/onboarding/MicPermissionScreen';
 import DemoLessonScreen from '../screens/onboarding/DemoLessonScreen';
@@ -112,6 +113,11 @@ export default function AppNavigator() {
         <Stack.Screen
           name="Auth"
           component={AuthScreen}
+          options={{ animation: 'slide_from_right' }}
+        />
+        <Stack.Screen
+          name="Plans"
+          component={PlansScreen}
           options={{ animation: 'slide_from_right' }}
         />
         <Stack.Screen

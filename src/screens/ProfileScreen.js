@@ -16,6 +16,8 @@ import { useAuth } from '../context/AuthContext';
 import { useNavigation } from '@react-navigation/native';
 import { ACHIEVEMENTS, XP_LEVEL_NAMES } from '../data/achievements';
 import ProgressBar from '../components/ProgressBar';
+import UpgradeModal from '../components/UpgradeModal';
+import { cancelSubscription } from '../services/api';
 import { PURPLE, PINK, YELLOW, GREEN, BG, CARD, BORDER, GRAY } from '../theme/colors';
 
 const BLUE = PURPLE;
@@ -34,37 +36,38 @@ export default function ProfileScreen() {
     challengeMode, toggleChallengeMode, updateProfile,
     userSelectedLevel, resetOnboarding,
   } = useApp();
-  const { logout, user, isPremium, updatePlan } = useAuth();
+  const { logout, user, isPremium, refreshSubscription } = useAuth();
   // Plano vindo do backend: 'free' | 'premium' → rótulo capitalizado
   const plan = isPremium ? 'Premium' : 'Free';
-  const [upgrading, setUpgrading] = useState(false);
+  const [showUpgrade, setShowUpgrade] = useState(false);
 
   const handleUpgrade = () => {
     if (isPremium) {
-      Alert.alert('Premium ativo', 'Você já tem acesso a todos os recursos premium. 🎉');
+      Alert.alert(
+        'Gerenciar assinatura',
+        'Você já é Premium. Deseja cancelar a renovação automática?',
+        [
+          { text: 'Manter', style: 'cancel' },
+          {
+            text: 'Cancelar assinatura', style: 'destructive',
+            onPress: async () => {
+              try {
+                await cancelSubscription();
+                await refreshSubscription();
+                Alert.alert(
+                  'Assinatura cancelada',
+                  'Você continua com acesso premium até a data de expiração atual.',
+                );
+              } catch (e) {
+                Alert.alert('Erro', e.message || 'Não foi possível cancelar.');
+              }
+            },
+          },
+        ],
+      );
       return;
     }
-    Alert.alert(
-      '✨ Upgrade para Premium',
-      'Desbloqueie:\n\n• Níveis Intermediário e Avançado\n• Modo Speak AI (tradutor + tutor de pronúncia)\n• Todas as categorias e relatórios\n\nDeseja ativar agora?',
-      [
-        { text: 'Agora não', style: 'cancel' },
-        {
-          text: 'Ativar Premium',
-          onPress: async () => {
-            try {
-              setUpgrading(true);
-              await updatePlan('premium');
-              Alert.alert('🎉 Bem-vindo ao Premium!', 'Todos os recursos foram desbloqueados.');
-            } catch (e) {
-              Alert.alert('Erro', e.message || 'Não foi possível atualizar o plano.');
-            } finally {
-              setUpgrading(false);
-            }
-          },
-        },
-      ],
-    );
+    setShowUpgrade(true);
   };
   const [editing, setEditing] = useState(false);
   const [tempName, setTempName] = useState(userName);
@@ -246,12 +249,12 @@ export default function ProfileScreen() {
 
           <MenuItem
             icon={isPremium ? 'star' : 'diamond-outline'}
-            label={isPremium ? 'Premium ativo ✨' : (upgrading ? 'Ativando...' : 'Upgrade para Premium')}
+            label={isPremium ? 'Premium ativo ✨' : 'Ver planos e assinar'}
             description={isPremium
-              ? 'Você tem acesso a todos os recursos'
-              : 'Desbloqueia Speak AI, Intermediário e Avançado'}
+              ? 'Gerenciar / cancelar assinatura'
+              : 'Compare Free vs Premium e escolha o melhor para você'}
             blue
-            onPress={handleUpgrade}
+            onPress={isPremium ? handleUpgrade : () => navigation.navigate('Plans')}
           />
           <MenuItem
             icon="notifications-outline"
@@ -315,6 +318,7 @@ export default function ProfileScreen() {
         </View>
 
       </ScrollView>
+      <UpgradeModal visible={showUpgrade} onClose={() => setShowUpgrade(false)} />
     </SafeAreaView>
   );
 }

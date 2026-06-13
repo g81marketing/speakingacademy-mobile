@@ -84,15 +84,31 @@ export function AuthProvider({ children }) {
     }
   };
 
-  // Atualiza o plano do usuário (free | premium) e persiste localmente
-  const updatePlan = async (plan) => {
-    const updatedUser = await apiService.updatePlan(plan);
-    setUser(updatedUser);
-    await AsyncStorage.setItem(USER_KEY, JSON.stringify(updatedUser));
-    return updatedUser;
+  // Atualiza apenas os campos de assinatura no usuário local após webhook do MP
+  // (chamar depois do retorno do checkout para refletir o novo plano)
+  const refreshSubscription = async () => {
+    try {
+      const sub = await apiService.getSubscriptionStatus();
+      const updated = {
+        ...user,
+        plan: sub.plan,
+        subscriptionStatus: sub.subscriptionStatus,
+        subscriptionExpiresAt: sub.subscriptionExpiresAt,
+      };
+      setUser(updated);
+      await AsyncStorage.setItem(USER_KEY, JSON.stringify(updated));
+      return sub;
+    } catch (e) {
+      console.warn('[Auth] Erro ao atualizar assinatura:', e.message);
+      return null;
+    }
   };
 
-  const isPremium = user?.plan === 'premium';
+  // Premium "real": plano + status ativo + não expirou
+  const isPremium =
+    user?.plan === 'premium' &&
+    user?.subscriptionStatus === 'active' &&
+    (!user?.subscriptionExpiresAt || new Date(user.subscriptionExpiresAt) > new Date());
 
   return (
     <AuthContext.Provider
@@ -106,7 +122,7 @@ export function AuthProvider({ children }) {
         login,
         logout,
         refreshUser,
-        updatePlan,
+        refreshSubscription,
       }}
     >
       {children}

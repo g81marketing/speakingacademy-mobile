@@ -153,16 +153,51 @@ export async function evaluateSpeech(audioUri, expectedText) {
   return data; // { transcript, score }
 }
 
-// Atualiza o plano do usuário (free | premium)
-export async function updatePlan(plan) {
-  const res = await fetch(`${API_URL}/user/plan`, {
-    method: 'PATCH',
+// ─── Assinatura (Mercado Pago) ───────────────────────────────────────────────
+// Cria um checkout e devolve a URL (init_point) para abrir no navegador.
+export async function createSubscriptionCheckout() {
+  const res = await fetch(`${API_URL}/subscription/checkout`, {
+    method: 'POST',
     headers: await authHeaders(),
-    body: JSON.stringify({ plan }),
   });
   const data = await res.json();
-  if (!res.ok) throw new Error(data.error || 'Erro ao atualizar plano');
-  return data.user;
+  if (!res.ok) throw new Error(data.error || 'Erro ao iniciar checkout');
+  return data; // { initPoint, preapprovalId, status }
+}
+
+// Consulta o status atual da assinatura (valida expiração no backend)
+export async function getSubscriptionStatus() {
+  const res = await fetch(`${API_URL}/subscription/status`, {
+    headers: await authHeaders(),
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Erro ao consultar assinatura');
+  return data; // { plan, subscriptionStatus, subscriptionExpiresAt, isPremium }
+}
+
+// Cancela a assinatura no Mercado Pago (mantém acesso até expirar)
+export async function cancelSubscription() {
+  const res = await fetch(`${API_URL}/subscription/cancel`, {
+    method: 'POST',
+    headers: await authHeaders(),
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Erro ao cancelar assinatura');
+  return data;
+}
+
+// ─── Assinatura (Google Play Billing) ────────────────────────────────────────
+// Envia o purchaseToken (gerado pela compra no app Android) para o backend
+// validar server-side com a API do Google e ativar o Premium.
+export async function verifyGooglePurchase({ purchaseToken, productId, orderId }) {
+  const res = await fetch(`${API_URL}/subscription/google/verify`, {
+    method: 'POST',
+    headers: await authHeaders(),
+    body: JSON.stringify({ purchaseToken, productId, orderId }),
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Erro ao validar a compra');
+  return data; // { ok, isPremium, plan, subscriptionStatus, subscriptionExpiresAt, googleState }
 }
 
 // Traduz uma frase do português para inglês usando IA no backend

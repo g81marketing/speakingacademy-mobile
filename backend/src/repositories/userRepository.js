@@ -5,6 +5,10 @@ const SELECT_PUBLIC = {
   id: true, name: true, email: true,
   level: true, plan: true, xp: true, xpLevel: true,
   streak: true, lastTrainedAt: true, createdAt: true,
+  subscriptionStatus: true, subscriptionExpiresAt: true,
+  paymentProvider: true,
+  paymentSubscriptionId: true, paymentCustomerId: true,
+  googlePurchaseToken: true, googleProductId: true, googleOrderId: true,
 };
 
 async function findById(id) {
@@ -39,4 +43,24 @@ async function findWithStats(id) {
   });
 }
 
-module.exports = { findById, findByEmail, create, update, findWithStats };
+async function findByPaymentSubscriptionId(preapprovalId) {
+  return prisma.user.findFirst({
+    where: { paymentSubscriptionId: preapprovalId },
+    select: SELECT_PUBLIC,
+  });
+}
+
+// Usado pelas notificações do Google Play (RTDN) para localizar o usuário
+// dono de um purchaseToken.
+async function findByGooglePurchaseToken(purchaseToken) {
+  return prisma.user.findFirst({
+    where: { googlePurchaseToken: purchaseToken },
+    select: SELECT_PUBLIC,
+  });
+}
+
+module.exports = {
+  findById, findByEmail, create, update, findWithStats,
+  findByPaymentSubscriptionId,
+  findByGooglePurchaseToken,
+};
